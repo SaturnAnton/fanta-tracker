@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Ricerca Giocatori - Statistiche Fantacalcio{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Ricerca Statistiche Fantacalcio</h1>
+    <p>Trova e visualizza le statistiche dettagliate di qualsiasi giocatore di fantacalcio</p>
+</div>
+
+<div class="search-container">
+    <div class="search-box-wrapper">
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search-box" 
+            placeholder="Digita il nome del giocatore..."
+            autocomplete="off"
+        >
+        <div id="suggestionsDropdown" class="suggestions-dropdown hidden"></div>
+    </div>
+</div>
+
+<div id="noResults" class="no-results hidden">
+    <p>Nessun giocatore trovato. Prova a digitare un nome diverso.</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,150 @@
+"""
+Data helper module for reading and processing CSV files.
+Handles CSV data loading for Fantacalcio statistics files.
+Supports files named: Statistiche_Fantacalcio_Stagione_[Year].csv
+"""
+
+import os
+import pandas as pd
+from pathlib import Path
+from typing import List, Dict, Any, Tuple
+
+
+DATA_DIR = Path(__file__).parent / "data"
+FANTACALCIO_PREFIX = "Statistiche_Fantacalcio_Stagione_"
+
+
+def get_all_csv_files() -> List[Tuple[Path, str]]:
+    """
+    Scan the data directory and return all Fantacalcio CSV files.
+    Returns: List of (file_path, season) tuples sorted by season.
+    
+    Example: (Path('data/Statistiche_Fantacalcio_Stagione_2023_24.csv'), '2023_24')
+    """
+    if not DATA_DIR.exists():
+        return []
+    
+    files_with_seasons = []
+    
+    for csv_file in sorted(DATA_DIR.glob(f"{FANTACALCIO_PREFIX}*.csv")):
+        season = extract_season_from_filename(csv_file.name)
+        if season:
+            files_with_seasons.append((csv_file, season))
+    
+    return files_with_seasons
+
+
+def extract_season_from_filename(filename: str) -> str:
+    """
+    Extract season from Fantacalcio filename.
+    E.g., 'Statistiche_Fantacalcio_Stagione_2023_24.csv' -> '2023_24'
+    """
+    if not filename.startswith(FANTACALCIO_PREFIX) or not filename.endswith(".csv"):
+        return None
+    
+    # Remove prefix and .csv extension
+    season = filename[len(FANTACALCIO_PREFIX):-4]
+    return season if season else None
+
+
+def load_csv_data(file_path: Path) -> pd.DataFrame:
+    """
+    Load CSV file and clean the player name column.
+    Handles CSV files with a title row that needs to be skipped.
+    Uses "Nome" column for player names.
+    """
+    try:
+        # Skip first row (title row in Fantacalcio files)
+        df = pd.read_csv(file_path, skiprows=1)
+        
+        # Clean player names: strip whitespace
+        if "Nome" in df.columns:
+            df["Nome"] = df["Nome"].astype(str).str.strip()
+        
+        return df
+    except Exception as e:
+        print(f"Error reading {file_path}: {e}")
+        return None
+
+
+def get_all_player_names() -> List[str]:
+    """
+    Scan all Fantacalcio CSV files and return a unique, sorted list of player names.
+    Uses the "Nome" column from the CSV files.
+    """
+    player_names = set()
+    files_with_seasons = get_all_csv_files()
+    
+    for csv_file, season in files_with_seasons:
+        df = load_csv_data(csv_file)
+        if df is None or "Nome" not in df.columns:
+            continue
+        
+        # Add all non-null player names
+        names = df["Nome"].dropna().unique().tolist()
+        player_names.update(names)
+    
+    return sorted(list(player_names))
+
+
+def search_player_names(query: str) -> List[str]:
+    """
+    Search for player names matching the query (case-insensitive, partial match).
+    """
+    all_names = get_all_player_names()
+    query_lower = query.lower().strip()
+    
+    if not query_lower:
+        return []
+    
+    # Return names that contain the query string
+    return [name for name in all_names if query_lower in name.lower()]
+
+
+def get_player_statistics(player_name: str) -> Dict[str, Any]:
+    """
+    Aggregate all statistics for a player across all Fantacalcio CSV files.
+    
+    Returns: {
+        'player_name': str,
+        'columns': [list of column names, starting with 'Stagione'],
+        'rows': [list of dicts with 'Stagione' column added]
+    }
+    
+    Note: Different seasons may have different columns. Missing values are represented as None.
+    """
+    all_rows = []
+    all_columns = set()
+    files_with_seasons = get_all_csv_files()
+    
+    for csv_file, season in files_with_seasons:
+        df = load_csv_data(csv_file)
+        if df is None or "Nome" not in df.columns:
+            continue
+        
+        # Filter for this player (case-insensitive match)
+        player_df = df[df["Nome"].str.lower() == player_name.lower()].copy()
+        
+        if player_df.empty:
+            continue
+        
+        # Add season column at the beginning
+        player_df.insert(0, "Stagione", season)
+        
+        # Track all columns
+        all_columns.update(player_df.columns)
+        
+        # Convert to list of dicts
+        rows = player_df.to_dict(orient="records")
+        all_rows.extend(rows)
+    
+    # Determine column order: Stagione first, then others (excluding player name column)
+    columns = ["Stagione"] + sorted(
+        [col for col in all_columns if col not in ["Stagione", "Nome"]]
+    )
+    
+    return {
+        "player_name": player_name,
+        "columns": columns,
+        "rows": all_rows,
+    }

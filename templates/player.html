@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ player_name }} - Statistiche Fantacalcio{% endblock %}
+
+{% block content %}
+<div class="player-header">
+    <h1>{{ player_name }}</h1>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">← Torna ai risultati</a>
+</div>
+
+<div id="loadingMessage" class="loading">
+    <p>Caricamento statistiche del giocatore...</p>
+</div>
+
+<div id="tableContainer" class="table-container hidden">
+    <table id="playerTable" class="player-table">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<div id="noDataMessage" class="no-data hidden">
+    <p>Nessuna statistica trovata per questo giocatore.</p>
+</div>
+
+<script>
+    // Get player name from heading
+    const playerName = "{{ player_name }}";
+    
+    // Fetch and display player statistics
+    fetch(`/api/player/${encodeURIComponent(playerName)}`)
+        .then(response => response.json())
+        .then(data => {
+            const loadingMsg = document.getElementById('loadingMessage');
+            const tableContainer = document.getElementById('tableContainer');
+            const noDataMsg = document.getElementById('noDataMessage');
+            
+            if (!data.rows || data.rows.length === 0) {
+                loadingMsg.classList.add('hidden');
+                noDataMsg.classList.remove('hidden');
+                return;
+            }
+            
+            // Build table header dynamically based on returned columns
+            const thead = document.getElementById('tableHead');
+            const headerRow = document.createElement('tr');
+            data.columns.forEach(col => {
+                const th = document.createElement('th');
+                th.textContent = col;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            
+            // Build table body with dynamic columns
+            const tbody = document.getElementById('tableBody');
+            data.rows.forEach(row => {
+                const tr = document.createElement('tr');
+                data.columns.forEach(col => {
+                    const td = document.createElement('td');
+                    const value = row[col];
+                    // Handle null/undefined values
+                    td.textContent = (value !== null && value !== undefined) ? value : '-';
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            
+            // Show table, hide loading
+            loadingMsg.classList.add('hidden');
+            tableContainer.classList.remove('hidden');
+        })
+        .catch(error => {
+            console.error('Errore nel caricamento dei dati:', error);
+            document.getElementById('loadingMessage').classList.add('hidden');
+            document.getElementById('noDataMessage').classList.remove('hidden');
+        });
+</script>
+{% endblock %}
+
