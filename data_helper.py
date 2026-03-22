@@ -6,30 +6,36 @@ Supports files named: Statistiche_Fantacalcio_Stagione_[Year].csv
 
 import os
 import pandas as pd
-from pathlib import Path
 from typing import List, Dict, Any, Tuple
 
 
-DATA_DIR = Path(__file__).parent / "data"
+# Use os.path for serverless environment compatibility
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(CURRENT_DIR, "data")
 FANTACALCIO_PREFIX = "Statistiche_Fantacalcio_Stagione_"
 
 
-def get_all_csv_files() -> List[Tuple[Path, str]]:
+def get_all_csv_files() -> List[Tuple[str, str]]:
     """
     Scan the data directory and return all Fantacalcio CSV files.
     Returns: List of (file_path, season) tuples sorted by season.
     
-    Example: (Path('data/Statistiche_Fantacalcio_Stagione_2023_24.csv'), '2023_24')
+    Example: ('/path/to/data/Statistiche_Fantacalcio_Stagione_2023_24.csv', '2023_24')
     """
-    if not DATA_DIR.exists():
+    if not os.path.exists(DATA_DIR):
         return []
     
     files_with_seasons = []
     
-    for csv_file in sorted(DATA_DIR.glob(f"{FANTACALCIO_PREFIX}*.csv")):
-        season = extract_season_from_filename(csv_file.name)
-        if season:
-            files_with_seasons.append((csv_file, season))
+    try:
+        for filename in sorted(os.listdir(DATA_DIR)):
+            if filename.startswith(FANTACALCIO_PREFIX) and filename.endswith(".csv"):
+                season = extract_season_from_filename(filename)
+                if season:
+                    file_path = os.path.join(DATA_DIR, filename)
+                    files_with_seasons.append((file_path, season))
+    except OSError as e:
+        print(f"Error reading data directory: {e}")
     
     return files_with_seasons
 
@@ -47,7 +53,7 @@ def extract_season_from_filename(filename: str) -> str:
     return season if season else None
 
 
-def load_csv_data(file_path: Path) -> pd.DataFrame:
+def load_csv_data(file_path: str) -> pd.DataFrame:
     """
     Load CSV file and clean the player name column.
     Handles CSV files with a title row that needs to be skipped.
