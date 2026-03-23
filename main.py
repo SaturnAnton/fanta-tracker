@@ -9,7 +9,6 @@ app = Flask(
     static_url_path="/static",
 )
 
-
 app.register_blueprint(api_bp)
 
 
@@ -23,4 +22,7 @@ def home():
 def player_details(player_name: str):
     """Render the player details page."""
     return render_template("player.html", player_name=player_name)
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
     

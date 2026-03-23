@@ -3,18 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Statistiche Fantacalcio{% endblock %}</title>
+    <title>FantaTracker</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/ball.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a href="{{ url_for('home') }}">⚽ Statistiche Fantacalcio</a>
-            </div>
-        </div>
-    </nav>
-
     <div class="container">
         {% block content %}{% endblock %}
     </div>

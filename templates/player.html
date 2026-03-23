@@ -5,7 +5,6 @@
 {% block content %}
 <div class="player-header">
     <h1>{{ player_name }}</h1>
-    <a href="{{ url_for('home') }}" class="btn btn-secondary">← Torna ai risultati</a>
 </div>
 
 <div id="loadingMessage" class="loading">
@@ -21,6 +20,10 @@
 
 <div id="noDataMessage" class="no-data hidden">
     <p>Nessuna statistica trovata per questo giocatore.</p>
+</div>
+
+<div class="button-footer">
+    <a href="{{ url_for('home') }}" class="btn-secondary">← Torna ai risultati</a>
 </div>
 
 <script>
@@ -76,4 +79,3 @@
         });
 </script>
 {% endblock %}
-
