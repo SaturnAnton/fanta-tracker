@@ -207,3 +207,59 @@ body {
     transform: translateX(-50%);
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .player-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .player-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .player-table {
+        font-size: 0.9rem;
+    }
+
+    .player-table th,
+    .player-table td {
+        padding: 0.5rem;
+    }
+
+    .search-box-wrapper {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .player-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .search-box {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.95rem;
+    }
+}
