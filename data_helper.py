@@ -109,12 +109,7 @@ def search_player_names(query: str) -> List[str]:
 def get_player_statistics(player_name: str) -> Dict[str, Any]:
     """
     Aggregate specific statistics for a player across all Fantacalcio CSV files.
-    
-    Returns: {
-        'player_name': str,
-        'columns': ['Stagione', 'Pv', 'Mv', 'Fm', 'Gf', 'Amm', 'Esp', 'R'],
-        'rows': [list of dicts with only the requested columns]
-    }
+    Dynamically adjusts columns based on whether the player is a Goalkeeper (P) or Outfield player.
     """
     all_rows = []
     files_with_seasons = get_all_csv_files()
@@ -137,10 +132,27 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
         rows = player_df.to_dict(orient="records")
         all_rows.extend(rows)
     
-    # Define the exact columns and order requested by the user
-    columns = ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
+    # Se non abbiamo trovato dati, restituiamo una struttura vuota di default
+    if not all_rows:
+        return {
+            "player_name": player_name,
+            "columns": ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"],
+            "rows": [],
+        }
     
-    # Filter the rows to keep only the requested columns
+    # Controlliamo il ruolo del giocatore prendendolo dalla prima riga trovata
+    # (Usiamo .get("R") o .get("Ruolo") a seconda di come è nominata la colonna nel tuo CSV)
+    player_role = all_rows[0].get("R", "").upper()
+    
+    # Scegliamo le colonne in base al ruolo
+    if player_role == "P":
+        # Colonne specifiche per i PORTIERI (Gs = Gol subiti, Rp = Rigori parati)
+        columns = ["Stagione", "Pv", "Mv", "Fm", "Gs", "Rp", "Amm", "Esp", "R"]
+    else:
+        # Colonne per i giocatori di MOVIMENTO (Gf = Gol fatti)
+        columns = ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
+    
+    # Filtriamo le righe per tenere solo i dati delle colonne scelte
     filtered_rows = []
     for row in all_rows:
         filtered_row = {col: row.get(col, None) for col in columns}
