@@ -27,10 +27,8 @@
 </div>
 
 <script>
-    // Get player name from heading
     const playerName = "{{ player_name }}";
     
-    // Fetch and display player statistics
     fetch(`/api/player/${encodeURIComponent(playerName)}`)
         .then(response => response.json())
         .then(data => {
@@ -44,7 +42,6 @@
                 return;
             }
             
-            // Build table header dynamically based on returned columns
             const thead = document.getElementById('tableHead');
             const headerRow = document.createElement('tr');
             data.columns.forEach(col => {
@@ -54,21 +51,18 @@
             });
             thead.appendChild(headerRow);
             
-            // Build table body with dynamic columns
             const tbody = document.getElementById('tableBody');
             data.rows.forEach(row => {
                 const tr = document.createElement('tr');
                 data.columns.forEach(col => {
                     const td = document.createElement('td');
                     const value = row[col];
-                    // Handle null/undefined values
                     td.textContent = (value !== null && value !== undefined) ? value : '-';
                     tr.appendChild(td);
                 });
                 tbody.appendChild(tr);
             });
             
-            // Show table, hide loading
             loadingMsg.classList.add('hidden');
             tableContainer.classList.remove('hidden');
         })

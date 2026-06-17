@@ -20,7 +20,7 @@ def get_all_csv_files() -> List[Tuple[str, str]]:
     Scan the data directory and return all Fantacalcio CSV files.
     Returns: List of (file_path, season) tuples sorted by season.
     
-    Example: ('/path/to/data/Statistiche_Fantacalcio_Stagione_2023_24.csv', '2023_24')
+    Example: ('/path/to/data/Statistiche_Fantacalcio_Stagione_2023_24.csv', '2023-24')
     """
     if not os.path.exists(DATA_DIR):
         return []
@@ -42,15 +42,14 @@ def get_all_csv_files() -> List[Tuple[str, str]]:
 
 def extract_season_from_filename(filename: str) -> str:
     """
-    Extract season from Fantacalcio filename.
-    E.g., 'Statistiche_Fantacalcio_Stagione_2023_24.csv' -> '2023_24'
+    Extract season from Fantacalcio filename and format with a dash.
+    E.g., 'Statistiche_Fantacalcio_Stagione_2023_24.csv' -> '2023-24'
     """
     if not filename.startswith(FANTACALCIO_PREFIX) or not filename.endswith(".csv"):
         return None
     
-    # Remove prefix and .csv extension
     season = filename[len(FANTACALCIO_PREFIX):-4]
-    return season if season else None
+    return season.replace("_", "-") if season else None
 
 
 def load_csv_data(file_path: str) -> pd.DataFrame:
@@ -109,18 +108,15 @@ def search_player_names(query: str) -> List[str]:
 
 def get_player_statistics(player_name: str) -> Dict[str, Any]:
     """
-    Aggregate all statistics for a player across all Fantacalcio CSV files.
+    Aggregate specific statistics for a player across all Fantacalcio CSV files.
     
     Returns: {
         'player_name': str,
-        'columns': [list of column names, starting with 'Stagione'],
-        'rows': [list of dicts with 'Stagione' column added]
+        'columns': ['Stagione', 'Pv', 'Mv', 'Fm', 'Gf', 'Amm', 'Esp', 'R'],
+        'rows': [list of dicts with only the requested columns]
     }
-    
-    Note: Different seasons may have different columns. Missing values are represented as None.
     """
     all_rows = []
-    all_columns = set()
     files_with_seasons = get_all_csv_files()
     
     for csv_file, season in files_with_seasons:
@@ -137,20 +133,21 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
         # Add season column at the beginning
         player_df.insert(0, "Stagione", season)
         
-        # Track all columns
-        all_columns.update(player_df.columns)
-        
         # Convert to list of dicts
         rows = player_df.to_dict(orient="records")
         all_rows.extend(rows)
     
-    # Determine column order: Stagione first, then others (excluding player name column)
-    columns = ["Stagione"] + sorted(
-        [col for col in all_columns if col not in ["Stagione", "Nome"]]
-    )
+    # Define the exact columns and order requested by the user
+    columns = ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
+    
+    # Filter the rows to keep only the requested columns
+    filtered_rows = []
+    for row in all_rows:
+        filtered_row = {col: row.get(col, None) for col in columns}
+        filtered_rows.append(filtered_row)
     
     return {
         "player_name": player_name,
         "columns": columns,
-        "rows": all_rows,
+        "rows": filtered_rows,
     }
