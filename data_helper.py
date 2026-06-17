@@ -19,8 +19,6 @@ def get_all_csv_files() -> List[Tuple[str, str]]:
     """
     Scan the data directory and return all Fantacalcio CSV files.
     Returns: List of (file_path, season) tuples sorted by season.
-    
-    Example: ('/path/to/data/Statistiche_Fantacalcio_Stagione_2023_24.csv', '2023-24')
     """
     if not os.path.exists(DATA_DIR):
         return []
@@ -56,16 +54,14 @@ def load_csv_data(file_path: str) -> pd.DataFrame:
     """
     Load CSV file and clean the player name column.
     Handles CSV files with a title row that needs to be skipped.
-    Uses "Nome" column for player names.
     """
     try:
-        # Skip first row (title row in Fantacalcio files)
         df = pd.read_csv(file_path, skiprows=1)
         
         # Clean player names: strip whitespace
         if "Nome" in df.columns:
             df["Nome"] = df["Nome"].astype(str).str.strip()
-        
+            
         return df
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
@@ -75,17 +71,15 @@ def load_csv_data(file_path: str) -> pd.DataFrame:
 def get_all_player_names() -> List[str]:
     """
     Scan all Fantacalcio CSV files and return a unique, sorted list of player names.
-    Uses the "Nome" column from the CSV files.
     """
     player_names = set()
     files_with_seasons = get_all_csv_files()
     
-    for csv_file, season in files_with_seasons:
+    for csv_file, _ in files_with_seasons:
         df = load_csv_data(csv_file)
         if df is None or "Nome" not in df.columns:
             continue
         
-        # Add all non-null player names
         names = df["Nome"].dropna().unique().tolist()
         player_names.update(names)
     
@@ -102,57 +96,75 @@ def search_player_names(query: str) -> List[str]:
     if not query_lower:
         return []
     
-    # Return names that contain the query string
     return [name for name in all_names if query_lower in name.lower()]
+
+
+def _find_player_id_by_name(player_name: str) -> int:
+    """
+    Helper function to find the unique ID of a player given their name.
+    Scans from the most recent file backwards to get the latest valid ID.
+    """
+    files_with_seasons = reversed(get_all_csv_files()) # Partiamo dai file più recenti
+    
+    for csv_file, _ in files_with_seasons:
+        df = load_csv_data(csv_file)
+        if df is None or "Nome" not in df.columns or "Id" not in df.columns:
+            continue
+        
+        # Cerca il match del nome
+        match = df[df["Nome"].str.lower() == player_name.lower()]
+        if not match.empty:
+            return int(match.iloc[0]["Id"])
+            
+    return None
 
 
 def get_player_statistics(player_name: str) -> Dict[str, Any]:
     """
-    Aggregate specific statistics for a player across all Fantacalcio CSV files.
-    Dynamically adjusts columns based on whether the player is a Goalkeeper (P) or Outfield player.
+    Aggregate specific statistics for a player across all files using their unique ID.
+    Dynamically adjusts columns for Goalkeepers (P) vs Outfield players.
     """
-    all_rows = []
-    files_with_seasons = get_all_csv_files()
+    # 1. Trova l'ID univoco partendo dal nome passato
+    player_id = _find_player_id_by_name(player_name)
     
-    for csv_file, season in files_with_seasons:
-        df = load_csv_data(csv_file)
-        if df is None or "Nome" not in df.columns:
-            continue
-        
-        # Filter for this player (case-insensitive match)
-        player_df = df[df["Nome"].str.lower() == player_name.lower()].copy()
-        
-        if player_df.empty:
-            continue
-        
-        # Add season column at the beginning
-        player_df.insert(0, "Stagione", season)
-        
-        # Convert to list of dicts
-        rows = player_df.to_dict(orient="records")
-        all_rows.extend(rows)
-    
-    # Se non abbiamo trovato dati, restituiamo una struttura vuota di default
-    if not all_rows:
+    if player_id is None:
         return {
             "player_name": player_name,
             "columns": ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"],
             "rows": [],
         }
+        
+    all_rows = []
+    files_with_seasons = get_all_csv_files()
     
-    # Controlliamo il ruolo del giocatore prendendolo dalla prima riga trovata
-    # (Usiamo .get("R") o .get("Ruolo") a seconda di come è nominata la colonna nel tuo CSV)
-    player_role = all_rows[0].get("R", "").upper()
+    # 2. Cerca in tutti i file usando l'ID invece del nome
+    for csv_file, season in files_with_seasons:
+        df = load_csv_data(csv_file)
+        if df is None or "Id" not in df.columns:
+            continue
+        
+        # Filtro per ID (sicuro al 100% anche se ha cambiato nome nel file)
+        player_df = df[df["Id"] == player_id].copy()
+        
+        if player_df.empty:
+            continue
+        
+        # Aggiungi colonna Stagione
+        player_df.insert(0, "Stagione", season)
+        
+        rows = player_df.to_dict(orient="records")
+        all_rows.extend(rows)
     
-    # Scegliamo le colonne in base al ruolo
+    # 3. Determina il ruolo ("P" o altro) basandoti sull'ultima riga trovata
+    player_role = all_rows[-1].get("R", "").upper() if all_rows else ""
+    
+    # 4. Imposta le colonne mirate richieste
     if player_role == "P":
-        # Colonne specifiche per i PORTIERI (Gs = Gol subiti, Rp = Rigori parati)
         columns = ["Stagione", "Pv", "Mv", "Fm", "Gs", "Rp", "Amm", "Esp", "R"]
     else:
-        # Colonne per i giocatori di MOVIMENTO (Gf = Gol fatti)
         columns = ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
     
-    # Filtriamo le righe per tenere solo i dati delle colonne scelte
+    # 5. Filtra i dati finali
     filtered_rows = []
     for row in all_rows:
         filtered_row = {col: row.get(col, None) for col in columns}
