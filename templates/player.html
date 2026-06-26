@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="player-header">
-    <h1>{{ player_name }}</h1>
+    <h1 id="playerTitle"></h1>
 </div>
 
 <div id="loadingMessage" class="loading">
@@ -27,21 +27,25 @@
 </div>
 
 <script>
-    const playerName = "{{ player_name }}";
-    
-    fetch(`/api/player/${encodeURIComponent(playerName)}`)
+    const playerName = "{{ player_name | safe }}";
+    const decodedName = decodeURIComponent(playerName);
+
+    // Mostra subito il nome decodificato nell'intestazione
+    document.getElementById('playerTitle').textContent = decodedName;
+
+    fetch(`/api/player/${encodeURIComponent(decodedName)}`)
         .then(response => response.json())
         .then(data => {
             const loadingMsg = document.getElementById('loadingMessage');
             const tableContainer = document.getElementById('tableContainer');
             const noDataMsg = document.getElementById('noDataMessage');
-            
+
             if (!data.rows || data.rows.length === 0) {
                 loadingMsg.classList.add('hidden');
                 noDataMsg.classList.remove('hidden');
                 return;
             }
-            
+
             const thead = document.getElementById('tableHead');
             const headerRow = document.createElement('tr');
             data.columns.forEach(col => {
@@ -50,7 +54,7 @@
                 headerRow.appendChild(th);
             });
             thead.appendChild(headerRow);
-            
+
             const tbody = document.getElementById('tableBody');
             data.rows.forEach(row => {
                 const tr = document.createElement('tr');
@@ -62,7 +66,7 @@
                 });
                 tbody.appendChild(tr);
             });
-            
+
             loadingMsg.classList.add('hidden');
             tableContainer.classList.remove('hidden');
         })
