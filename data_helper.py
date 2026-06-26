@@ -7,6 +7,7 @@ Supports files named: Statistiche_Fantacalcio_Stagione_[Year].csv
 import os
 import pandas as pd
 from typing import List, Dict, Any, Tuple
+import urllib.parse
 
 
 # Use os.path for serverless environment compatibility
@@ -104,6 +105,7 @@ def _find_player_id_by_name(player_name: str) -> int:
     Helper function to find the unique ID of a player given their name.
     Scans from the most recent file backwards to get the latest valid ID.
     """
+    player_name = urllib.parse.unquote(player_name)
     files_with_seasons = reversed(get_all_csv_files()) # Partiamo dai file più recenti
     
     for csv_file, _ in files_with_seasons:
@@ -124,7 +126,7 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
     Aggregate specific statistics for a player across all files using their unique ID.
     Dynamically adjusts columns for Goalkeepers (P) vs Outfield players.
     """
-    # 1. Trova l'ID univoco partendo dal nome passato
+    player_name = urllib.parse.unquote(player_name)
     player_id = _find_player_id_by_name(player_name)
     
     if player_id is None:
@@ -160,9 +162,9 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
     
     # 4. Imposta le colonne mirate richieste
     if player_role == "P":
-        columns = ["Stagione", "Pv", "Mv", "Fm", "Gs", "Rp", "Amm", "Esp", "R"]
+        columns = ["Stagione","Squadra","Pv", "Mv", "Fm", "Gs", "Rp", "Amm", "Esp", "R"]
     else:
-        columns = ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
+        columns = ["Stagione","Squadra", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
     
     # 5. Filtra i dati finali
     filtered_rows = []
