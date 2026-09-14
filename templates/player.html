@@ -5,6 +5,10 @@
 {% block content %}
 <div class="player-header">
     <h1 id="playerTitle"></h1>
+    <div id="playerMeta" class="player-meta hidden">
+        <span id="playerRole" class="badge badge-role"></span>
+        <span id="playerTeam" class="badge badge-team"></span>
+    </div>
 </div>
 
 <div id="loadingMessage" class="loading">
@@ -18,14 +22,36 @@
     </table>
 </div>
 
+<div id="chartSection" class="chart-section hidden">
+    <h2 class="chart-title">Confronto statistiche</h2>
+
+    <div class="chart-controls">
+        <div class="season-selector" id="seasonSelector"></div>
+        <div class="chart-mode-actions">
+            <button type="button" id="selectAllSeasons" class="btn-chip">Tutte le stagioni</button>
+            <button type="button" id="clearSeasons" class="btn-chip">Deseleziona</button>
+        </div>
+    </div>
+
+    <div class="radar-wrapper">
+        <canvas id="radarChart"></canvas>
+    </div>
+
+    <div class="button-footer button-footer-attached">
+        <a href="{{ url_for('home') }}" class="btn-secondary">← Torna ai risultati</a>
+    </div>
+</div>
+
 <div id="noDataMessage" class="no-data hidden">
     <p>Nessuna statistica trovata per questo giocatore.</p>
+    <div class="button-footer">
+        <a href="{{ url_for('home') }}" class="btn-secondary">← Torna ai risultati</a>
+    </div>
 </div>
+{% endblock %}
 
-<div class="button-footer">
-    <a href="{{ url_for('home') }}" class="btn-secondary">← Torna ai risultati</a>
-</div>
-
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script>
     const playerName = "{{ player_name | safe }}";
     const decodedName = decodeURIComponent(playerName);
@@ -33,12 +59,46 @@
     // Mostra subito il nome decodificato nell'intestazione
     document.getElementById('playerTitle').textContent = decodedName;
 
+    // Etichette leggibili per le statistiche usate nel radar chart
+    const STAT_LABELS = {
+        Pv: "Presenze",
+        Mv: "Media Voto",
+        Fm: "Fantamedia",
+        Gf: "Gol Fatti",
+        Gs: "Gol Subiti",
+        Rp: "Rigori Parati",
+        Ass: "Assist",
+        Amm: "Ammonizioni",
+        Esp: "Espulsioni",
+    };
+
+    // Colonne non numeriche, escluse dal radar chart
+    const NON_STAT_COLUMNS = new Set(["Stagione", "Squadra", "R"]);
+
+    // Palette di colori pensata per risaltare su uno sfondo blu elettrico
+    const SEASON_COLORS = [
+        "#fbbf24", // giallo
+        "#34d399", // verde acqua
+        "#f472b6", // rosa
+        "#ffffff", // bianco
+        "#fb923c", // arancione
+        "#c084fc", // viola chiaro
+        "#22d3ee", // ciano
+        "#a3e635", // lime
+    ];
+
+    let radarChart = null;
+    let playerRows = [];
+    let statKeys = [];
+
     fetch(`/api/player/${encodeURIComponent(decodedName)}`)
         .then(response => response.json())
         .then(data => {
             const loadingMsg = document.getElementById('loadingMessage');
             const tableContainer = document.getElementById('tableContainer');
             const noDataMsg = document.getElementById('noDataMessage');
+            const chartSection = document.getElementById('chartSection');
+            const playerMeta = document.getElementById('playerMeta');
 
             if (!data.rows || data.rows.length === 0) {
                 loadingMsg.classList.add('hidden');
@@ -46,6 +106,14 @@
                 return;
             }
 
+            // Ruolo e squadra attuale accanto al nome
+            if (data.role_extended || data.team) {
+                document.getElementById('playerRole').textContent = data.role_extended || '';
+                document.getElementById('playerTeam').textContent = data.team || '';
+                playerMeta.classList.remove('hidden');
+            }
+
+            // Costruzione tabella
             const thead = document.getElementById('tableHead');
             const headerRow = document.createElement('tr');
             data.columns.forEach(col => {
@@ -69,11 +137,143 @@
 
             loadingMsg.classList.add('hidden');
             tableContainer.classList.remove('hidden');
+
+            // Preparazione dati per il diagramma di Kiviat
+            playerRows = data.rows;
+            statKeys = data.columns.filter(col => !NON_STAT_COLUMNS.has(col));
+
+            if (playerRows.length > 0 && statKeys.length >= 3) {
+                buildSeasonSelector(playerRows);
+                chartSection.classList.remove('hidden');
+                renderRadarChart(playerRows.map(r => r.Stagione));
+            }
         })
         .catch(error => {
             console.error('Errore nel caricamento dei dati:', error);
             document.getElementById('loadingMessage').classList.add('hidden');
             document.getElementById('noDataMessage').classList.remove('hidden');
         });
+
+    function buildSeasonSelector(rows) {
+        const container = document.getElementById('seasonSelector');
+        container.innerHTML = '';
+
+        rows.forEach((row, index) => {
+            const label = document.createElement('label');
+            label.className = 'season-checkbox';
+
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.value = row.Stagione;
+            input.checked = true;
+            input.addEventListener('change', updateChartFromSelection);
+
+            const swatch = document.createElement('span');
+            swatch.className = 'season-swatch';
+            swatch.style.backgroundColor = SEASON_COLORS[index % SEASON_COLORS.length];
+
+            const text = document.createElement('span');
+            text.textContent = row.Stagione;
+
+            label.appendChild(input);
+            label.appendChild(swatch);
+            label.appendChild(text);
+            container.appendChild(label);
+        });
+
+        document.getElementById('selectAllSeasons').addEventListener('click', () => {
+            container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+            updateChartFromSelection();
+        });
+
+        document.getElementById('clearSeasons').addEventListener('click', () => {
+            container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            updateChartFromSelection();
+        });
+    }
+
+    function updateChartFromSelection() {
+        const checked = Array.from(document.querySelectorAll('#seasonSelector input[type="checkbox"]:checked'))
+            .map(cb => cb.value);
+        renderRadarChart(checked);
+    }
+
+    function renderRadarChart(selectedSeasons) {
+        const canvas = document.getElementById('radarChart');
+        const selectedRows = playerRows.filter(r => selectedSeasons.includes(r.Stagione));
+
+        if (radarChart) {
+            radarChart.destroy();
+            radarChart = null;
+        }
+
+        if (selectedRows.length === 0) {
+            return;
+        }
+
+        // Normalizza ogni statistica su una scala 0-100 in base al massimo tra le stagioni disponibili,
+        // cosi' le forme restano leggibili anche quando le grandezze delle statistiche sono molto diverse tra loro.
+        const maxPerStat = {};
+        statKeys.forEach(key => {
+            const values = playerRows.map(r => Number(r[key]) || 0);
+            maxPerStat[key] = Math.max(...values, 1);
+        });
+
+        const datasets = selectedRows.map((row) => {
+            const originalIndex = playerRows.findIndex(r => r.Stagione === row.Stagione);
+            const color = SEASON_COLORS[originalIndex % SEASON_COLORS.length];
+            return {
+                label: row.Stagione,
+                data: statKeys.map(key => ((Number(row[key]) || 0) / maxPerStat[key]) * 100),
+                borderColor: color,
+                backgroundColor: color + "33",
+                pointBackgroundColor: color,
+                borderWidth: 2,
+                rawValues: statKeys.map(key => row[key]),
+            };
+        });
+
+        radarChart = new Chart(canvas, {
+            type: 'radar',
+            data: {
+                labels: statKeys.map(key => STAT_LABELS[key] || key),
+                datasets: datasets,
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            display: false,
+                            backdropColor: 'transparent',
+                        },
+                        grid: { color: 'rgba(255, 255, 255, 0.25)' },
+                        angleLines: { color: 'rgba(255, 255, 255, 0.25)' },
+                        pointLabels: {
+                            color: '#ffffff',
+                            font: { size: 13, weight: '600' },
+                        },
+                    },
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#ffffff', font: { size: 13 } },
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                const raw = context.dataset.rawValues[context.dataIndex];
+                                const label = STAT_LABELS[statKeys[context.dataIndex]] || statKeys[context.dataIndex];
+                                return `${context.dataset.label} - ${label}: ${raw !== null && raw !== undefined ? raw : '-'}`;
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    }
 </script>
 {% endblock %}

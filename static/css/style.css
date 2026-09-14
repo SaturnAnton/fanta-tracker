@@ -122,6 +122,35 @@ body {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
+.player-meta {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.badge-role {
+    background-color: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.5);
+}
+
+.badge-team {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 .table-container {
     margin: 2rem 0;
     border-radius: 8px;
@@ -165,11 +194,126 @@ body {
     background-color: rgba(249, 250, 251, 0.5);
 }
 
+.chart-section {
+    margin: 2rem 0 3rem;
+    padding: 1.5rem 1.5rem 0;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.chart-section.hidden {
+    display: none;
+}
+
+.chart-title {
+    margin: 0 0 1rem;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.chart-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.season-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.season-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.season-checkbox input[type="checkbox"] {
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.season-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.chart-mode-actions {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.btn-chip {
+    padding: 0.45rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-chip:hover {
+    background-color: #ffffff;
+    color: #002288;
+}
+
+.radar-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 420px;
+    margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+    .radar-wrapper {
+        height: 320px;
+    }
+
+    .chart-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chart-mode-actions {
+        justify-content: center;
+    }
+}
+
 .button-footer {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 50px;
     width: 100%;
+}
+
+.button-footer-attached {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary {

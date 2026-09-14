@@ -15,6 +15,14 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(CURRENT_DIR, "data")
 FANTACALCIO_PREFIX = "Statistiche_Fantacalcio_Stagione_"
 
+# Mappa dei codici ruolo (colonna "R") alla dicitura estesa
+ROLE_NAMES = {
+    "P": "Portiere",
+    "D": "Difensore",
+    "C": "Centrocampista",
+    "A": "Attaccante",
+}
+
 
 def get_all_csv_files() -> List[Tuple[str, str]]:
     """
@@ -132,7 +140,10 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
     if player_id is None:
         return {
             "player_name": player_name,
-            "columns": ["Stagione", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"],
+            "role": "",
+            "role_extended": "",
+            "team": None,
+            "columns": ["Stagione", "Squadra", "R", "Pv", "Mv", "Fm", "Gf", "Ass", "Amm", "Esp"],
             "rows": [],
         }
         
@@ -157,14 +168,15 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
         rows = player_df.to_dict(orient="records")
         all_rows.extend(rows)
     
-    # 3. Determina il ruolo ("P" o altro) basandoti sull'ultima riga trovata
+    # 3. Determina ruolo e squadra attuale basandoti sull'ultima riga trovata (stagione più recente)
     player_role = all_rows[-1].get("R", "").upper() if all_rows else ""
-    
-    # 4. Imposta le colonne mirate richieste
+    player_team = all_rows[-1].get("Squadra") if all_rows else None
+
+    # 4. Imposta le colonne mirate richieste (con l'aggiunta degli assist)
     if player_role == "P":
-        columns = ["Stagione","Squadra","Pv", "Mv", "Fm", "Gs", "Rp", "Amm", "Esp", "R"]
+        columns = ["Stagione", "Squadra", "R", "Pv", "Mv", "Fm", "Gs", "Rp", "Ass", "Amm", "Esp"]
     else:
-        columns = ["Stagione","Squadra", "Pv", "Mv", "Fm", "Gf", "Amm", "Esp", "R"]
+        columns = ["Stagione", "Squadra", "R", "Pv", "Mv", "Fm", "Gf", "Ass", "Amm", "Esp"]
     
     # 5. Filtra i dati finali
     filtered_rows = []
@@ -174,6 +186,9 @@ def get_player_statistics(player_name: str) -> Dict[str, Any]:
     
     return {
         "player_name": player_name,
+        "role": player_role,
+        "role_extended": ROLE_NAMES.get(player_role, player_role),
+        "team": player_team,
         "columns": columns,
         "rows": filtered_rows,
     }
