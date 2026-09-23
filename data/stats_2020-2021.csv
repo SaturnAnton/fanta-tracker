@@ -1,0 +1,595 @@
+﻿"number";"player";"team";"apps";"min";"goals";"a";"xG";"xA";"xG90";"xA90"
+1;"Cristiano Ronaldo";"Juventus";33;2807;29;3;29.84;3.85;0.96;0.12
+2;"Romelu Lukaku";"Inter";36;2885;24;11;23.43;8.39;0.73;0.26
+3;"Luis Muriel";"Atalanta";36;1434;22;8;16.69;4.89;1.05;0.31
+4;"Dusan Vlahovic";"Fiorentina";37;2945;21;3;18.48;2.3;0.56;0.07
+5;"Ciro Immobile";"Lazio";35;2887;20;6;19.77;7.2;0.62;0.22
+6;"Simy";"Crotone";38;2935;20;2;17.47;1.53;0.54;0.05
+7;"Lorenzo Insigne";"Napoli";35;2888;19;7;17.35;9.12;0.54;0.28
+8;"Domenico Berardi";"Sassuolo";30;2494;17;7;14.49;6.1;0.52;0.22
+9;"Lautaro Martínez";"Inter";38;2598;17;6;16.89;6.31;0.59;0.22
+10;"João Pedro";"Cagliari";37;3273;16;3;13.29;5.3;0.37;0.15
+11;"Duván Zapata";"Atalanta";37;2407;15;9;18.04;6.08;0.67;0.23
+12;"Zlatan Ibrahimovic";"AC Milan";19;1503;15;2;16.25;1.42;0.97;0.08
+13;"Henrikh Mkhitaryan";"Roma";34;2752;13;10;12.42;8.95;0.41;0.29
+14;"Andrea Belotti";"Torino";35;2915;13;6;13.57;7.07;0.42;0.22
+15;"Fabio Quagliarella";"Sampdoria";33;2216;13;1;11.09;1.41;0.45;0.06
+16;"Franck Kessié";"AC Milan";37;3231;13;4;13.5;3.91;0.38;0.11
+17;"Mattia Destro";"Genoa";29;1625;11;1;7.48;0.58;0.41;0.03
+18;"Álvaro Morata";"Juventus";32;2019;11;9;12.07;5.67;0.54;0.25
+19;"Ante Rebic";"AC Milan";27;1783;11;4;7.28;6.7;0.37;0.34
+20;"Robin Gosens";"Atalanta";32;2545;11;6;9.2;3.66;0.33;0.13
+21;"Francesco Caputo";"Sassuolo";25;1703;11;5;10.66;2.44;0.56;0.13
+22;"Hirving Lozano";"Napoli";32;1977;11;3;11.05;5.13;0.5;0.23
+23;"M&#039;Bala Nzola";"Spezia";25;1900;11;3;9.38;2.41;0.44;0.11
+24;"Jordan Veretout";"Roma";29;2086;10;2;8.36;2.95;0.36;0.13
+25;"Borja Mayoral";"Roma";31;1544;10;2;7.81;2.11;0.46;0.12
+26;"Victor Osimhen";"Napoli";24;1576;10;3;10.6;3.31;0.61;0.19
+27;"Rodrigo de Paul";"Udinese";36;3206;9;9;6.26;11.7;0.18;0.33
+28;"Luis Alberto";"Lazio";34;2663;9;2;5.54;6.7;0.19;0.23
+29;"Dries Mertens";"Napoli";29;1466;9;8;6.03;4.32;0.37;0.27
+30;"Federico Chiesa";"Fiorentina,Juventus";33;2508;9;9;8.4;9.08;0.3;0.33
+31;"Matteo Politano";"Napoli";37;1913;9;4;6.31;3.72;0.3;0.18
+32;"Roberto Soriano";"Bologna";37;3261;9;6;6.68;7.55;0.18;0.21
+33;"Junior Messias";"Crotone";36;3224;9;4;7.36;3.2;0.21;0.09
+34;"Gianluca Lapadula";"Benevento";37;2596;8;2;10.25;3.8;0.36;0.13
+35;"Piotr Zielinski";"Napoli";36;2581;8;10;4.94;5.97;0.17;0.21
+36;"Joaquín Correa";"Lazio";28;1948;8;3;7.41;2.48;0.34;0.11
+37;"Felipe Caicedo";"Lazio";25;915;8;0;5.33;0.73;0.52;0.07
+38;"Eldor Shomurodov";"Genoa";31;1669;8;1;6.09;2.32;0.33;0.12
+39;"Gianluca Scamacca";"Genoa";26;1345;8;2;7.83;2.87;0.52;0.19
+40;"Musa Barrow";"Bologna";38;2946;8;8;8.41;6.86;0.26;0.21
+41;"Ruslan Malinovskiy";"Atalanta";36;1896;8;12;5.49;10.38;0.26;0.49
+42;"Alexis Sánchez";"Inter";30;1123;7;6;6.59;5.6;0.53;0.45
+43;"Goran Pandev";"Genoa";29;1400;7;3;4.14;1.4;0.27;0.09
+44;"Juraj Kucka";"Parma Calcio 1913";28;2354;7;2;7.06;2.23;0.27;0.09
+45;"Keita";"Sampdoria";25;1194;7;1;6.29;2.73;0.47;0.21
+46;"Edin Dzeko";"Roma";27;1838;7;3;14.25;2.37;0.7;0.12
+47;"Lorenzo Pellegrini";"Roma";34;2623;7;6;6.71;7.68;0.23;0.26
+48;"Sergej Milinkovic-Savic";"Lazio";32;2768;7;10;6;6.28;0.2;0.2
+49;"Theo Hernández";"AC Milan";33;2940;7;5;4.43;5.14;0.14;0.16
+50;"Achraf Hakimi";"Inter";37;2674;7;8;5.09;6.44;0.17;0.22
+51;"Hernani";"Parma Calcio 1913";33;2217;7;3;3.12;2.45;0.13;0.1
+52;"Riccardo Orsolini";"Bologna";34;1760;7;3;9.02;2.51;0.46;0.13
+53;"Antonin Barak";"Verona";34;2772;7;3;6.94;2.33;0.23;0.08
+54;"Giovanni Simeone";"Cagliari";33;1740;6;2;7.2;1.12;0.37;0.06
+55;"Mario Pasalic";"Atalanta";25;1100;6;2;4.46;3;0.36;0.25
+56;"Jakub Jankto";"Sampdoria";35;2439;6;3;4.88;3.03;0.18;0.11
+57;"Josip Ilicic";"Atalanta";28;1527;6;9;5.75;10.87;0.34;0.64
+58;"Simone Zaza";"Torino";29;1472;6;0;8.16;1.56;0.5;0.1
+59;"Mattia Zaccagni";"Verona";36;2656;6;5;4.11;5.84;0.14;0.2
+60;"Daniele Verde";"Spezia";21;992;6;1;3.34;2.11;0.3;0.19
+61;"Rafael Leão";"AC Milan";30;1938;6;6;7.03;4.89;0.33;0.23
+62;"Giacomo Raspadori";"Sassuolo";27;1224;6;0;5.09;2.29;0.37;0.17
+63;"Tommaso Pobega";"Spezia";20;1269;6;0;3.65;0.34;0.26;0.02
+64;"Pedro";"Roma";27;1607;5;2;4.99;3.38;0.28;0.19
+65;"Gianluca Caprari";"Benevento";30;1900;5;6;3.83;2.46;0.18;0.12
+66;"Filip Djuricic";"Sassuolo";32;2127;5;4;6.8;6.25;0.29;0.26
+67;"Federico Dimarco";"Verona";35;2615;5;3;2.55;7.5;0.09;0.26
+68;"Antonio Candreva";"Sampdoria";35;2517;5;8;4.78;6.04;0.17;0.22
+69;"Rodrigo Palacio";"Bologna";36;2508;5;5;9.87;5.07;0.35;0.18
+70;"Roberto Pereyra";"Udinese";34;2949;5;7;4.14;4.31;0.13;0.13
+71;"Gervinho";"Parma Calcio 1913";27;2040;5;1;3.71;2.33;0.16;0.1
+72;"Antonio Sanabria";"Torino";14;986;5;1;3.27;0.56;0.3;0.05
+73;"Weston McKennie";"Juventus";34;1684;5;2;5.2;3.88;0.28;0.21
+74;"Nicolas Viola";"Benevento";17;1042;5;3;3.6;1.32;0.31;0.11
+75;"Bremer";"Torino";33;2939;5;0;2.95;0.3;0.09;0.01
+76;"Mattias Svanberg";"Bologna";34;1878;5;2;5.16;2.73;0.25;0.13
+77;"Hamed Junior Traore";"Sassuolo";35;1786;5;2;4.42;3.89;0.22;0.2
+78;"Roberto Piccoli";"Spezia";20;693;5;0;5.04;0.5;0.65;0.07
+79;"Gaetano Castrovilli";"Fiorentina";34;2365;5;3;3.17;2.26;0.12;0.09
+80;"Hakan Calhanoglu";"AC Milan";33;2641;4;9;4.76;8.86;0.16;0.3
+81;"Ivan Perisic";"Inter";32;1799;4;4;4.95;4.21;0.25;0.21
+82;"Leonardo Pavoletti";"Cagliari";33;1576;4;3;7.45;1.42;0.43;0.08
+83;"Manuel Locatelli";"Sassuolo";34;2887;4;2;3.5;3.23;0.11;0.1
+84;"Davide Zappacosta";"Genoa";25;2050;4;2;2.59;1.23;0.11;0.05
+85;"Paulo Dybala";"Juventus";20;1131;4;3;4.8;3.16;0.38;0.25
+86;"Marco Sau";"Benevento";24;765;4;2;2.31;1.49;0.27;0.18
+87;"Alejandro Gomez";"Atalanta";10;676;4;2;2.73;1.62;0.36;0.22
+88;"Jasmin Kurtic";"Parma Calcio 1913";34;2757;4;0;3.84;2.58;0.13;0.08
+89;"Andrea Petagna";"Napoli";26;944;4;3;4.3;3.22;0.41;0.31
+90;"Diego Farias";"Spezia";29;1500;4;2;2.99;4.02;0.18;0.24
+91;"Stefano Okaka";"Udinese";22;1494;4;1;4.29;0.64;0.26;0.04
+92;"Kevin Lasagna";"Udinese,Verona";36;2372;4;1;11.37;3.27;0.43;0.12
+93;"Aleksey Miranchuk";"Atalanta";25;641;4;2;1.58;2.12;0.22;0.3
+94;"Adam Ounas";"Cagliari,Crotone";22;1531;4;3;3.42;4.26;0.2;0.25
+95;"Adrien Rabiot";"Juventus";34;2310;4;2;2.82;1.77;0.11;0.07
+96;"Jeremie Boga";"Sassuolo";27;1785;4;2;4.48;1.15;0.23;0.06
+97;"Marco Faraoni";"Verona";34;2902;4;7;3.5;4.37;0.11;0.14
+98;"Gianluca Mancini";"Roma";33;2857;4;2;2.67;1.01;0.08;0.03
+99;"Brahim Diaz";"AC Milan";27;1254;4;3;3.59;1.37;0.26;0.1
+100;"Charalampos Lykogiannis";"Cagliari";31;2447;4;2;1.86;1.25;0.07;0.05
+101;"Dejan Kulusevski";"Juventus";35;1917;4;3;3.33;6.33;0.16;0.3
+102;"Emmanuel Gyasi";"Spezia";37;2869;4;6;5.12;4.34;0.16;0.14
+103;"Matteo Darmian";"Inter,Parma Calcio 1913";29;1364;3;3;1.59;1.01;0.11;0.07
+104;"Christian Eriksen";"Inter";26;1401;3;0;1.18;2.39;0.08;0.15
+105;"Darko Lazovic";"Verona";32;2504;3;6;3.15;5.4;0.11;0.19
+106;"Giacomo Bonaventura";"Fiorentina";34;2288;3;2;2.93;3.22;0.12;0.13
+107;"Milan Skriniar";"Inter";32;2782;3;0;2.33;0.59;0.08;0.02
+108;"Manolo Gabbiadini";"Sampdoria";16;879;3;2;2.69;1.78;0.28;0.18
+109;"Nicolò Barella";"Inter";36;2912;3;7;2.44;5.98;0.08;0.18
+110;"Gregoire Defrel";"Sassuolo";28;1340;3;3;2.32;1.01;0.16;0.07
+111;"Roberto Gagliardini";"Inter";28;1225;3;2;1.21;1.89;0.09;0.14
+112;"Danilo D&#039;Ambrosio";"Inter";19;679;3;0;1.97;0.2;0.26;0.03
+113;"Sasa Lukic";"Torino";32;2116;3;0;1.95;1.27;0.08;0.05
+114;"Valerio Verre";"Sampdoria";27;994;3;3;2.11;1.85;0.19;0.17
+115;"Marko Pjaca";"Genoa";35;1409;3;2;2.82;2.11;0.18;0.13
+116;"Gaetano Letizia";"Benevento";24;1567;3;1;0.42;1.2;0.02;0.07
+117;"Martin Erlic";"Spezia";27;1786;3;1;1.45;0.49;0.07;0.02
+118;"Fabián";"Napoli";33;2577;3;1;2.55;1.83;0.09;0.06
+119;"Rolando Mandragora";"Torino,Udinese";27;1917;3;1;3.45;0.6;0.16;0.03
+120;"Tolgay Arslan";"Udinese";30;1861;3;0;0.91;0.54;0.04;0.03
+121;"Nikola Milenkovic";"Fiorentina";34;3038;3;1;3.94;0.65;0.12;0.02
+122;"Andrej Galabinov";"Spezia";12;411;3;1;2.96;0.24;0.65;0.05
+123;"Giovanni Di Lorenzo";"Napoli";36;3240;3;6;4.02;5.7;0.11;0.16
+124;"Ignacio Pussetto";"Udinese";11;761;3;1;2.38;1.09;0.28;0.13
+125;"Morten Thorsby";"Sampdoria";33;2647;3;1;2.76;1.02;0.09;0.03
+126;"Razvan Marin";"Cagliari";37;2995;3;6;1.33;3.84;0.04;0.12
+127;"Giulio Maggiore";"Spezia";33;2231;3;1;5.06;1.89;0.2;0.08
+128;"Mihai Valentin Mihaila";"Parma Calcio 1913";16;679;3;0;2.94;0.35;0.39;0.05
+129;"Luca Caldirola";"Benevento";25;1560;2;0;0.53;0.16;0.03;0.01
+130;"Franck Ribéry";"Fiorentina";29;2195;2;6;2.86;5.52;0.12;0.23
+131;"Albin Ekdal";"Sampdoria";32;2301;2;1;0.86;0.97;0.03;0.04
+132;"Aaron Ramsey";"Juventus";22;1105;2;4;4.65;3.78;0.38;0.31
+133;"Juan Cuadrado";"Juventus";30;2185;2;10;2.45;10;0.1;0.41
+134;"Armando Izzo";"Torino";25;2025;2;0;0.83;0.17;0.04;0.01
+135;"Miguel Veloso";"Verona";21;1312;2;2;1.78;0.63;0.12;0.04
+136;"Lorenzo De Silvestri";"Bologna";29;2160;2;0;2.06;0.74;0.09;0.03
+137;"Ilija Nestorovski";"Udinese";22;666;2;2;5.14;1.83;0.7;0.25
+138;"Leonardo Bonucci";"Juventus";26;2037;2;0;3.65;0.87;0.16;0.04
+139;"Alex Sandro";"Juventus";26;1857;2;1;1.78;2.1;0.09;0.1
+140;"Riccardo Saponara";"Fiorentina,Spezia";11;444;2;0;1.18;0.72;0.24;0.15
+141;"Vlad Chiriches";"Sassuolo";24;1859;2;1;0.98;0.44;0.05;0.02
+142;"Nikola Kalinic";"Verona";19;1077;2;0;4.22;0.44;0.35;0.04
+143;"Rafael Toloi";"Atalanta";31;2542;2;0;3.29;0.89;0.12;0.03
+144;"Remo Freuler";"Atalanta";34;2726;2;3;2.01;3.95;0.07;0.13
+145;"Leonardo Spinazzola";"Roma";27;2137;2;4;2.18;6.56;0.09;0.28
+146;"Marcelo Brozovic";"Inter";33;2592;2;6;1.05;4.68;0.04;0.16
+147;"Davide Calabria";"AC Milan";32;2652;2;1;1.95;1.77;0.07;0.06
+148;"Artur Ionita";"Benevento";36;2861;2;0;1.48;0.85;0.05;0.03
+149;"Roberto Insigne";"Benevento";30;1598;2;4;3.69;3.85;0.21;0.22
+150;"Kamil Glik";"Benevento";36;3208;2;1;3.27;0.36;0.09;0.01
+151;"Nicola Sansone";"Bologna";26;1163;2;2;4.25;2.6;0.33;0.2
+152;"Riccardo Gagliolo";"Parma Calcio 1913";28;1953;2;2;3.41;0.92;0.16;0.04
+153;"Martín Cáceres";"Fiorentina";29;2241;2;2;1.83;1.16;0.07;0.05
+154;"Andrea Favilli";"Verona";11;330;2;0;1.87;0.11;0.51;0.03
+155;"Federico Bonazzoli";"Sampdoria,Torino";22;661;2;3;1.71;1.35;0.23;0.18
+156;"Tiemoué Bakayoko";"Napoli";32;1985;2;1;1.4;0.71;0.06;0.03
+157;"Valentin Eysseric";"Fiorentina";16;715;2;0;1.55;0.87;0.2;0.11
+158;"Maxime Lopez";"Sassuolo";29;1876;2;0;1.57;1.08;0.08;0.05
+159;"Hans Hateboer";"Atalanta";22;1769;2;1;3.95;1.66;0.2;0.08
+160;"Diego Demme";"Napoli";24;1606;2;3;1.42;2.17;0.08;0.12
+161;"Yann Karamoh";"Parma Calcio 1913";24;1313;2;1;4.82;1.69;0.33;0.12
+162;"Adam Marusic";"Lazio";36;2963;2;3;2.18;1.76;0.07;0.05
+163;"Manuel Lazzari";"Lazio";32;2627;2;5;2.22;3.44;0.08;0.12
+164;"Eddie Salcedo";"Verona";21;746;2;0;3.78;0.35;0.46;0.04
+165;"Jens Stryger Larsen";"Udinese";33;2657;2;0;3.67;1.19;0.12;0.04
+166;"Riccardo Sottil";"Cagliari";21;1184;2;1;1.39;1.85;0.11;0.14
+167;"Matteo Pessina";"Atalanta";28;1667;2;2;2.49;2.94;0.13;0.16
+168;"Arkadiusz Reca";"Crotone";30;2324;2;3;1.22;2.73;0.05;0.11
+169;"Omar Colley";"Sampdoria";29;2591;2;0;1.44;0.08;0.05;0
+170;"Cristian Romero";"Atalanta";31;2552;2;2;1.36;0.84;0.05;0.03
+171;"Carles Pérez";"Roma";21;742;2;1;2.88;1.3;0.35;0.16
+172;"Eljif Elmas";"Napoli";33;683;2;1;1.9;0.44;0.25;0.06
+173;"Takehiro Tomiyasu";"Bologna";31;2721;2;0;2.29;0.43;0.08;0.01
+174;"Andreas Skov Olsen";"Bologna";26;1170;2;2;3.86;2.06;0.3;0.16
+175;"Nahitan Nández";"Cagliari";32;2747;2;2;3.09;2.63;0.1;0.09
+176;"Gastón Pereiro";"Cagliari";15;249;2;2;2.69;1.21;0.97;0.44
+177;"Alexis Saelemaekers";"AC Milan";32;2065;2;4;3;3.18;0.13;0.14
+178;"Adolfo Gaich";"Benevento";15;771;2;0;2.72;0.43;0.32;0.05
+179;"Mergim Vojvoda";"Torino";24;1360;2;2;1.17;0.84;0.08;0.06
+180;"Ivan Ilic";"Verona";29;1826;2;0;1.87;0.54;0.09;0.03
+181;"Vladimir Golemic";"Crotone";30;2331;2;0;1.27;0.52;0.05;0.02
+182;"Mikkel Damsgaard";"Sampdoria";35;1773;2;4;3.34;2.12;0.17;0.11
+183;"Sam Lammers";"Atalanta";15;269;2;0;1.38;0.39;0.46;0.13
+184;"Nahuel Molina";"Udinese";29;1808;2;5;1.22;2.7;0.06;0.13
+185;"Jens Petter Hauge";"AC Milan";18;498;2;0;1;1.32;0.18;0.24
+186;"Dennis Man";"Parma Calcio 1913";14;695;2;1;2.36;0.49;0.31;0.06
+187;"Arturo Vidal";"Inter";23;1136;1;1;2.76;0.9;0.22;0.07
+188;"Gerard Deulofeu";"Udinese";13;593;1;1;1.49;0.84;0.23;0.13
+189;"Ashley Young";"Inter";26;1435;1;4;1.53;2.14;0.1;0.13
+190;"Fikayo Tomori";"AC Milan";17;1466;1;0;0.98;0;0.06;0
+191;"Emmanuel Rivière";"Crotone";21;625;1;1;1.37;0.62;0.2;0.09
+192;"Graziano Pellè";"Parma Calcio 1913";13;604;1;2;1.6;2.11;0.24;0.31
+193;"Maya Yoshida";"Sampdoria";32;2275;1;2;1.54;0.7;0.06;0.03
+194;"Andreas Pereira";"Lazio";26;496;1;2;0.77;1.32;0.14;0.24
+195;"Federico Fazio";"Roma";6;409;1;0;0.07;0.04;0.02;0.01
+196;"Fernando Forestieri";"Udinese";19;532;1;1;1.65;1.03;0.28;0.17
+197;"Tomás Rincón";"Torino";36;2881;1;1;1.36;1.78;0.04;0.06
+198;"Andrea Poli";"Bologna";18;376;1;0;0.96;0.56;0.23;0.13
+199;"Alessio Romagnoli";"AC Milan";22;1905;1;1;2.88;0.97;0.14;0.05
+200;"Samir";"Udinese";30;2210;1;0;1.32;0.89;0.05;0.04
+201;"Cristiano Biraghi";"Fiorentina";35;2821;1;5;1.8;6.59;0.06;0.21
+202;"Gastón Brugman";"Parma Calcio 1913";26;1634;1;1;0.98;2.6;0.05;0.14
+203;"Bryan Cristante";"Roma";34;2142;1;3;2.37;1.74;0.1;0.07
+204;"Iago Falque";"Benevento";11;355;1;1;0.37;0.78;0.09;0.2
+205;"Karol Linetty";"Torino";27;1846;1;0;1.05;1.12;0.05;0.05
+206;"Radja Nainggolan";"Cagliari,Inter";26;1887;1;0;1.29;1.74;0.06;0.08
+207;"Stephan El Shaarawy";"Roma";10;564;1;1;1.44;1.2;0.23;0.19
+208;"Giuseppe Pezzella";"Parma Calcio 1913";24;1835;1;4;0.2;3.43;0.01;0.17
+209;"Stefano Sturaro";"Genoa,Verona";16;872;1;0;1.01;0.25;0.1;0.03
+210;"Daniele Rugani";"Cagliari";16;1008;1;1;0.18;0.62;0.02;0.06
+211;"Rade Krunic";"AC Milan";25;688;1;2;0.71;1.28;0.09;0.17
+212;"Andrés Tello";"Benevento";17;380;1;0;0.2;0.05;0.05;0.01
+213;"Amadou Diawara";"Roma";18;646;1;0;0.93;0.29;0.13;0.04
+214;"Lorenzo Tonelli";"Sampdoria";23;1787;1;0;2.16;0;0.11;0
+215;"Bruno Alves";"Parma Calcio 1913";19;1630;1;0;0.31;0.11;0.02;0.01
+216;"Matías Vecino";"Inter";8;278;1;1;0.86;0.71;0.28;0.23
+217;"Milan Badelj";"Genoa";30;2419;1;4;0.7;3.03;0.03;0.11
+218;"Simone Verdi";"Torino";33;1613;1;5;3.52;4.7;0.2;0.26
+219;"Erick Pulgar";"Fiorentina";31;1993;1;3;0.73;2.1;0.03;0.09
+220;"Ibrahima Mbaye";"Bologna";8;427;1;0;0.57;0.02;0.12;0.01
+221;"Cristian Ansaldi";"Torino";31;1929;1;6;1.75;5.25;0.08;0.25
+222;"Stefan de Vrij";"Inter";32;2730;1;0;0.77;0.25;0.03;0.01
+223;"Bruno Peres";"Roma";30;1402;1;2;1.25;4.32;0.08;0.28
+224;"Marten de Roon";"Atalanta";35;3021;1;1;0.6;1.14;0.02;0.03
+225;"Fernando Llorente";"Napoli,Udinese";17;762;1;0;1.87;0.58;0.22;0.07
+226;"Germán Pezzella";"Fiorentina";32;2749;1;0;1.23;0.68;0.04;0.02
+227;"Danilo";"Juventus";34;2922;1;4;1.83;3.41;0.06;0.11
+228;"Diego Godín";"Cagliari";28;2512;1;0;0.37;0.9;0.01;0.03
+229;"Samu Castillejo";"AC Milan";28;1154;1;0;2.66;0.9;0.21;0.07
+230;"Gonzalo Escalante";"Lazio";24;707;1;1;1.07;0.38;0.14;0.05
+231;"Domenico Criscito";"Genoa";23;1722;1;0;0.87;0.49;0.05;0.03
+232;"Adama Soumaoro";"Bologna";20;1752;1;0;1.28;0.04;0.07;0
+233;"Nicolas N&#039;Koulou";"Torino";18;1363;1;0;0.69;0.07;0.05;0
+234;"Koffi Djidji";"Crotone";20;1517;1;0;0.35;0.26;0.02;0.02
+235;"Soualiho Meité";"AC Milan,Torino";30;1492;1;1;0.85;0.84;0.05;0.05
+236;"Claudio Terzi";"Spezia";25;1880;1;1;0.63;0.72;0.03;0.03
+237;"Salvatore Molina";"Crotone";29;2336;1;4;0.76;2.42;0.03;0.09
+238;"José Luis Palomino";"Atalanta";36;2413;1;2;0.27;1.12;0.01;0.04
+239;"Andrea Pinamonti";"Inter";8;162;1;0;0.7;0.06;0.39;0.03
+240;"Alberto Cerri";"Cagliari";24;343;1;0;2.7;0.43;0.71;0.11
+241;"Bartosz Bereszynski";"Sampdoria";31;2602;1;0;0.17;0.84;0.01;0.03
+242;"Niccolò Zanellato";"Crotone";27;1643;1;1;0.59;1.08;0.03;0.06
+243;"Miha Zajc";"Genoa";31;1879;1;3;2.25;2.3;0.11;0.11
+244;"Emanuel Vignato";"Bologna";31;1180;1;4;1.56;3.29;0.12;0.25
+245;"Adrien Tameze";"Verona";33;2334;1;0;1.4;1.33;0.05;0.05
+246;"Andreas Cornelius";"Parma Calcio 1913";29;1898;1;4;2.8;3.18;0.13;0.15
+247;"Pasquale Schiattarella";"Benevento";29;2257;1;1;0.6;2.26;0.02;0.09
+248;"Bram Nuytinck";"Udinese";20;1645;1;0;0.47;0.11;0.03;0.01
+249;"Marvin Zeegelaar";"Udinese";24;1774;1;0;1.21;1.4;0.06;0.07
+250;"Marash Kumbulla";"Roma";21;1368;1;0;0.85;0.46;0.06;0.03
+251;"Rick Karsdorp";"Roma";34;2552;1;6;1.18;5.35;0.04;0.19
+252;"Adrien Silva";"Sampdoria";24;1612;1;1;0.47;0.88;0.03;0.05
+253;"Rodrigo Becão";"Udinese";35;2787;1;0;1.85;0.22;0.06;0.01
+254;"Arthur";"Juventus";22;1154;1;0;0.16;1.21;0.01;0.09
+255;"Nehuén Paz";"Bologna";6;358;1;0;0.47;0.01;0.12;0
+256;"Mehdi Bourabia";"Sassuolo";15;502;1;0;0.37;0.11;0.07;0.02
+257;"Christian Kouamé";"Fiorentina";33;966;1;1;3.51;1.2;0.33;0.11
+258;"Diogo Dalot";"AC Milan";21;1070;1;1;0.51;0.96;0.04;0.08
+259;"Wilfried Stephane Singo";"Torino";28;1855;1;2;1.14;3.5;0.06;0.17
+260;"Matthijs de Ligt";"Juventus";27;2220;1;1;0.94;1.01;0.04;0.04
+261;"Amir Rrahmani";"Napoli";16;1086;1;0;0.54;0;0.04;0
+262;"Jerdy Schouten";"Bologna";34;2518;1;1;0.17;2.57;0.01;0.09
+263;"Julian Chabot";"Spezia";25;1651;1;1;0.83;0.69;0.05;0.04
+264;"Tommaso Augello";"Sampdoria";37;3225;1;3;0.32;4.01;0.01;0.11
+265;"Ernesto Torregrossa";"Sampdoria";6;164;1;0;0.46;0.17;0.25;0.09
+266;"Kevin Agudelo";"Spezia";29;1349;1;2;1.29;1.2;0.09;0.08
+267;"Lisandro Magallán";"Crotone";28;2192;1;2;0.84;0.35;0.03;0.01
+268;"Georgios Kyriakopoulos";"Sassuolo";23;1455;1;0;1.66;1.39;0.1;0.09
+269;"Ebrima Colley";"Verona";23;709;1;0;2.26;0.66;0.29;0.08
+270;"Nicolás Domínguez";"Bologna";28;1248;1;0;1.19;1.57;0.09;0.11
+271;"Lennart Czyborra";"Genoa";17;1182;1;0;0.16;0.22;0.01;0.02
+272;"Pierre Kalulu Kyatengwa";"AC Milan";13;725;1;1;0.77;0.68;0.09;0.08
+273;"Eduardo Henrique";"Crotone";18;906;1;0;0.92;0.18;0.09;0.02
+274;"Riccardo Improta";"Benevento";34;2329;1;0;1.77;2.67;0.07;0.1
+275;"Alessandro Tuia";"Benevento";27;1766;1;0;0.48;0.49;0.02;0.02
+276;"Simone Bastoni";"Spezia";22;1538;1;6;1.2;2.63;0.07;0.15
+277;"Milos Vulic";"Crotone";25;1299;1;1;0.94;1.46;0.07;0.1
+278;"Vedat Muriqi";"Lazio";27;809;1;0;3.27;0.62;0.36;0.07
+279;"Lucas Martínez Quarta";"Fiorentina";21;1486;1;0;1.71;0.29;0.1;0.02
+280;"Amer Gojak";"Torino";15;466;1;1;0.79;0.23;0.15;0.04
+281;"Simon Sohm";"Parma Calcio 1913";18;887;1;0;0.83;0.52;0.08;0.05
+282;"Ardian Ismajli";"Spezia";17;1294;1;1;0.67;0.64;0.05;0.04
+283;"Juan Brunetta";"Parma Calcio 1913";12;470;1;2;0.83;0.84;0.16;0.16
+284;"Jayden Braaf";"Udinese";4;106;1;0;0.15;0.02;0.13;0.02
+285;"Jeremy Toljan";"Sassuolo";26;1491;0;1;0.37;0.88;0.02;0.05
+286;"Ragnar Klavan";"Cagliari";15;768;0;0;0.18;0.03;0.02;0
+287;"Ricardo Rodríguez";"Torino";16;1261;0;0;0.51;0.22;0.04;0.02
+288;"Kaan Ayhan";"Sassuolo";19;769;0;0;0.45;0.07;0.05;0.01
+289;"Douglas Costa";"Juventus";2;38;0;0;0;0.05;0;0.11
+290;"Lucas Leiva";"Lazio";32;2175;0;0;0.36;0.55;0.02;0.02
+291;"David Ospina";"Napoli";16;1440;0;1;0;0.07;0;0
+292;"Pedro Obiang";"Sassuolo";33;1458;0;1;0.55;1.03;0.03;0.06
+293;"Valon Behrami";"Genoa";26;875;0;0;0.55;0.1;0.06;0.01
+294;"Aleksandar Kolarov";"Inter";7;384;0;1;0.11;1.34;0.03;0.31
+295;"Chris Smalling";"Roma";16;1102;0;1;0.3;0.88;0.02;0.07
+296;"Gastón Ramírez";"Sampdoria";25;954;0;4;0.79;2.45;0.07;0.23
+297;"Mattia Perin";"Genoa";32;2880;0;0;0;0.02;0;0
+298;"Davide Biraschi";"Genoa";13;918;0;0;0.07;0;0.01;0
+299;"Gianluigi Donnarumma";"AC Milan";37;3330;0;0;0;0;0;0
+300;"Mattia De Sciglio";"Juventus";1;23;0;0;0.03;0;0.13;0
+301;"Cristian Zapata";"Genoa";12;968;0;0;0.08;0.02;0.01;0
+302;"Danilo";"Bologna";35;3132;0;1;0.94;1.59;0.03;0.05
+303;"Ryder Matos";"Udinese";1;11;0;0;0;0.03;0;0.25
+304;"Simone Scuffet";"Udinese";1;90;0;0;0;0;0;0
+305;"Ahmed Benali";"Crotone";18;1220;0;1;0.85;1.11;0.06;0.08
+306;"Antonio Barreca";"Fiorentina";3;86;0;0;0.07;0.04;0.08;0.04
+307;"Daniele Baselli";"Torino";15;369;0;0;0.22;0.76;0.05;0.19
+308;"Daniele Padelli";"Inter";1;42;0;0;0;0;0;0
+309;"Federico Marchetti";"Genoa";4;337;0;0;0;0;0;0
+310;"Wesley Hoedt";"Lazio";17;944;0;0;0.13;0.11;0.01;0.01
+311;"Patric";"Lazio";25;1605;0;1;0.53;1.11;0.03;0.06
+312;"Senad Lulic";"Lazio";16;713;0;0;0.48;0.36;0.06;0.05
+313;"Danilo Cataldi";"Lazio";19;552;0;0;0.32;0.24;0.05;0.04
+314;"Marco Parolo";"Lazio";18;645;0;2;0.44;0.87;0.06;0.12
+315;"Thomas Strakosha";"Lazio";9;810;0;0;0;0;0;0
+316;"Jacopo Sala";"Spezia";6;383;0;0;0;0.84;0;0.2
+317;"Vasco Regini";"Sampdoria";3;85;0;0;0;0.04;0;0.05
+318;"Luca Cigarini";"Crotone";14;957;0;0;0.54;1.14;0.05;0.11
+319;"Pedro Pereira";"Crotone";35;2571;0;4;0.92;3.15;0.03;0.11
+320;"Wojciech Szczesny";"Juventus";30;2679;0;1;0;0.11;0;0
+321;"Kostas Manolas";"Napoli";30;2306;0;0;0.96;0.5;0.04;0.02
+322;"Juan Jesus";"Roma";5;150;0;0;0;0;0;0
+323;"Kevin Strootman";"Genoa";18;1339;0;4;0.58;3.28;0.04;0.22
+324;"Edoardo Goldaniga";"Genoa";25;1852;0;1;0.4;0.71;0.02;0.03
+325;"Mato Jajalo";"Udinese";1;29;0;0;0;0;0;0
+326;"Andrea Rispoli";"Crotone";19;631;0;0;0.4;0.51;0.06;0.07
+327;"Gianluigi Buffon";"Juventus";8;720;0;0;0;0;0;0
+328;"Mario Mandzukic";"AC Milan";10;201;0;0;1.11;0.17;0.5;0.08
+329;"Emil Audero";"Sampdoria";37;3330;0;1;0;0.27;0;0.01
+330;"Lukasz Skorupski";"Bologna";28;2520;0;0;0;0;0;0
+331;"Vincent Laurini";"Parma Calcio 1913";14;877;0;0;0.3;0.04;0.03;0
+332;"Federico Barba";"Benevento";32;2661;0;2;0.54;1.53;0.02;0.05
+333;"Perparim Hetemaj";"Benevento";31;2236;0;2;0.59;1.16;0.02;0.05
+334;"Roberto Inglese";"Parma Calcio 1913";14;565;0;2;0.57;1.67;0.09;0.27
+335;"Ivan Radovanovic";"Genoa";33;2227;0;0;0.2;0.15;0.01;0.01
+336;"Vittorio Parigini";"Genoa";4;45;0;0;0.01;0;0.03;0
+337;"Alex Cordaz";"Crotone";36;3240;0;0;0;0.01;0;0
+338;"Gianmarco Ferrari";"Sassuolo";34;3013;0;4;1.72;1.66;0.05;0.05
+339;"Marco Festa";"Crotone";1;90;0;0;0;0;0;0
+340;"Federico Ceccherini";"Fiorentina,Verona";28;2032;0;0;1.11;0.48;0.05;0.02
+341;"José Reina";"Lazio";29;2610;0;0;0;0.02;0;0
+342;"Elseid Hysaj";"Napoli";24;1783;0;2;0.24;1.71;0.01;0.09
+343;"Kalidou Koulibaly";"Napoli";26;2212;0;0;0.98;0.3;0.04;0.01
+344;"Nikola Maksimovic";"Napoli";17;1206;0;0;0.58;0.18;0.04;0.01
+345;"José Callejón";"Fiorentina";20;646;0;1;0.25;1.4;0.03;0.2
+346;"Faouzi Ghoulam";"Napoli";11;273;0;0;0.12;0.75;0.04;0.25
+347;"Marko Rog";"Cagliari";14;1171;0;0;0.19;0.27;0.01;0.02
+348;"Christian Maggio";"Benevento";8;294;0;0;0.06;0;0.02;0
+349;"Luigi Sepe";"Parma Calcio 1913";36;3240;0;0;0;0;0;0
+350;"Fabio Pisacane";"Cagliari";5;224;0;0;0;0;0;0
+351;"Nicola Murru";"Torino";14;574;0;0;0.43;0.39;0.07;0.06
+352;"Rafael";"Spezia";3;205;0;1;0;0.31;0;0.14
+353;"Ciprian Tatarusanu";"AC Milan";1;90;0;0;0;0;0;0
+354;"Maximiliano Olivera";"Fiorentina";2;91;0;0;0;0;0;0
+355;"Borja Valero";"Fiorentina";20;446;0;0;0.21;0.04;0.04;0.01
+356;"Federico Bernardeschi";"Juventus";27;945;0;2;1.67;3.31;0.16;0.32
+357;"Sebastien De Maio";"Udinese";15;855;0;0;0.3;0;0.03;0
+358;"Ângelo Da Costa";"Bologna";6;540;0;0;0;0;0;0
+359;"Alex Ferrari";"Sampdoria";12;882;0;1;0;0.64;0;0.07
+360;"Andrea Consigli";"Sassuolo";37;3330;0;0;0;0;0;0
+361;"Pol Lirola";"Fiorentina";12;481;0;1;0.12;0.72;0.02;0.13
+362;"Francesco Acerbi";"Lazio";32;2814;0;1;1.04;1.18;0.03;0.04
+363;"Federico Peluso";"Sassuolo";7;200;0;0;0;0;0;0
+364;"Stefano Sensi";"Inter";18;580;0;0;1.34;0.55;0.21;0.08
+365;"Francesco Magnanelli";"Sassuolo";10;456;0;0;0.04;0.21;0.01;0.04
+366;"Federico Ricci";"Sassuolo";1;1;0;0;0;0;0;0
+367;"Alfred Duncan";"Cagliari,Fiorentina";23;1237;0;1;0.18;1.36;0.01;0.1
+368;"Cristian Dell&#039;Orco";"Spezia";8;259;0;0;0.08;0;0.03;0
+369;"Gianluca Pegolo";"Sassuolo";1;90;0;0;0;0;0;0
+370;"Andrea Masiello";"Genoa";30;2575;0;0;0.55;0.26;0.02;0.01
+371;"Mattia Caldara";"Atalanta";6;105;0;0;0.43;0;0.37;0
+372;"Andrea Conti";"AC Milan,Parma Calcio 1913";14;833;0;0;0.91;0.67;0.1;0.07
+373;"Marco Sportiello";"Atalanta";15;1259;0;0;0;0;0;0
+374;"Alberto Grassi";"Parma Calcio 1913";23;1172;0;0;0.52;0.35;0.04;0.03
+375;"Samir Handanovic";"Inter";37;3244;0;0;0;0;0;0
+376;"Davide Santon";"Roma";10;592;0;1;0.5;0.86;0.08;0.13
+377;"Gary Medel";"Bologna";11;505;0;1;0;0.14;0;0.02
+378;"Andrea Ranocchia";"Inter";8;706;0;1;1.38;0.98;0.18;0.13
+379;"Stefan Radu";"Lazio";31;2474;0;3;0.34;1.51;0.01;0.06
+380;"Federico Ravaglia";"Bologna";4;360;0;0;0;0;0;0
+381;"Federico Mattiello";"Spezia";1;33;0;0;0;0;0;0
+382;"Luca Ceppitelli";"Cagliari";19;1474;0;0;0.5;0.07;0.03;0
+383;"Bartlomiej Dragowski";"Fiorentina";36;3150;0;1;0;0.05;0;0
+384;"Giorgio Chiellini";"Juventus";17;1391;0;1;0.58;0.67;0.04;0.04
+385;"Kwadwo Asamoah";"Cagliari";9;203;0;0;0.05;0;0.02;0
+386;"Giuseppe Cuomo";"Crotone";13;796;0;0;0.4;0;0.05;0
+387;"Bastos";"Lazio";2;64;0;0;0;0;0;0
+388;"Riccardo Marchizza";"Spezia";24;1557;0;2;0.45;1.23;0.03;0.07
+389;"Antonio Mirante";"Roma";13;1156;0;0;0;0;0;0
+390;"Fabio Depaoli";"Atalanta,Benevento,Sampdoria";22;1399;0;0;0.34;0.63;0.02;0.04
+391;"Alessandro Deiola";"Cagliari,Spezia";24;965;0;0;0.46;0.92;0.04;0.09
+392;"Sebastiano Luperto";"Crotone";23;1893;0;0;0.18;0.17;0.01;0.01
+393;"Luca Marrone";"Crotone";21;1590;0;0;0.22;0;0.01;0
+394;"Mário Rui";"Napoli";27;1655;0;2;0.63;2.6;0.03;0.14
+395;"Ionut Radu";"Inter";2;134;0;0;0;0;0;0
+396;"Pierluigi Gollini";"Atalanta";25;2158;0;0;0;0.04;0;0
+397;"Luca Siligardi";"Crotone,Parma Calcio 1913";6;75;0;0;0.06;0.1;0.07;0.13
+398;"Alex Meret";"Napoli";22;1980;0;0;0;0.03;0;0
+399;"Simone Colombi";"Parma Calcio 1913";2;180;0;0;0;0;0;0
+400;"Berat Gjimshiti";"Atalanta";33;2623;0;3;1.75;3.44;0.06;0.12
+401;"Mohamed Fares";"Lazio";21;1151;0;1;0.97;2.01;0.08;0.16
+402;"Francesco Cassata";"Genoa";8;221;0;0;0.01;0.08;0.01;0.03
+403;"Antonio La Gumina";"Sampdoria";9;337;0;0;0.67;0.04;0.18;0.01
+404;"Jacopo Dezi";"Parma Calcio 1913";2;80;0;0;0.05;0.13;0.06;0.15
+405;"Simone Edera";"Torino";2;49;0;0;0.13;0.25;0.25;0.46
+406;"Samir Ujkani";"Torino";1;90;0;0;0;0;0;0
+407;"Paolo Ghiglione";"Genoa";23;1355;0;4;0.55;2.18;0.04;0.14
+408;"Lubomir Tupta";"Verona";2;51;0;0;0.12;0;0.21;0
+409;"Kastriot Dermaku";"Parma Calcio 1913";2;98;0;0;0;0;0;0
+410;"Pau López";"Roma";21;1814;0;0;0;0;0;0
+411;"Mateo Musacchio";"AC Milan,Lazio";5;260;0;0;0;0;0;0
+412;"Cristiano Piccini";"Atalanta";1;66;0;0;0.04;0;0.05;0
+413;"Aleksandr Kokorin";"Fiorentina";4;86;0;0;0;0;0;0
+414;"Jean-Daniel Akpa-Akpro";"Lazio";32;1009;0;1;1.19;0.76;0.11;0.07
+415;"Javier Pastore";"Roma";5;72;0;0;0;0.74;0;0.93
+416;"Salvatore Sirigu";"Torino";32;2880;0;0;0;0;0;0
+417;"Bryan Dabo";"Benevento";25;1113;0;0;0.79;0.27;0.06;0.02
+418;"Jean-Victor Makengo";"Udinese";17;505;0;0;0.09;0.11;0.02;0.02
+419;"Kevin Malcuit";"Fiorentina,Napoli";7;233;0;0;0.1;0.08;0.04;0.03
+420;"Lukas Haraslin";"Sassuolo";14;317;0;0;0.82;0.58;0.23;0.16
+421;"Gabriele Moncini";"Benevento";10;351;0;0;0.98;0.18;0.25;0.05
+422;"Alessio Cragno";"Cagliari";34;3060;0;0;0;0;0;0
+423;"Kevin Bonifazi";"Udinese";30;2476;0;0;1.19;0.16;0.04;0.01
+424;"Arturo Calabresi";"Bologna,Cagliari";3;29;0;0;0;0;0;0
+425;"Antonio Mazzotta";"Crotone";2;54;0;0;0;0;0;0
+426;"Simon Kjaer";"AC Milan";28;2403;0;2;1.03;1.19;0.04;0.04
+427;"Wylan Cyprien";"Parma Calcio 1913";13;387;0;0;0.21;0.16;0.05;0.04
+428;"Mamadou Coulibaly";"Udinese";3;183;0;0;0.08;0.14;0.04;0.07
+429;"Paolo Faragò";"Bologna,Cagliari";9;387;0;0;0.23;0.75;0.05;0.18
+430;"Patrick Cutrone";"Fiorentina";11;170;0;0;0.18;0;0.1;0
+431;"Matteo Gabbia";"AC Milan";8;556;0;0;0.72;0;0.12;0
+432;"Alessandro Bastoni";"Inter";33;2932;0;3;0.96;1.33;0.03;0.04
+433;"Filippo Melegoni";"Genoa";14;376;0;0;0.47;0.34;0.11;0.08
+434;"Luca Pellegrini";"Genoa";11;642;0;1;0.1;2.22;0.01;0.31
+435;"Giacomo Vrioni";"Juventus";1;1;0;0;0;0.12;0;11.24
+436;"Alessandro Buongiorno";"Torino";12;852;0;0;0.18;0.01;0.02;0
+437;"Gianluca Frabotta";"Juventus";15;672;0;1;0.3;0.94;0.04;0.13
+438;"Marlon Santos";"Sassuolo";24;1735;0;0;0.2;0.06;0.01;0
+439;"Alex Berenguer";"Torino";2;138;0;0;0.46;0;0.3;0
+440;"Nicolás Schiappacase";"Sassuolo";1;13;0;0;0;0;0;0
+441;"Walace";"Udinese";30;2058;0;0;0.47;0.24;0.02;0.01
+442;"Elio Capradossi";"Spezia";1;90;0;0;0.11;0;0.11;0
+443;"Lukas Lerager";"Genoa";16;1166;0;1;0.19;0.46;0.01;0.04
+444;"Carlo Pinsoglio";"Juventus";1;21;0;0;0;0;0;0
+445;"Rodrigo Bentancur";"Juventus";33;2340;0;4;0.59;2.68;0.02;0.1
+446;"Stanislav Lobotka";"Napoli";15;122;0;0;0;0;0;0
+447;"Nícolas";"Udinese";2;180;0;0;0;0;0;0
+448;"Daniel Bessa";"Verona";18;588;0;2;1.22;2;0.19;0.31
+449;"Marco Silvestri";"Verona";34;3060;0;0;0;0;0;0
+450;"Vanja Milinkovic-Savic";"Torino";5;450;0;0;0;0;0;0
+451;"Giovanni Crociata";"Crotone";2;21;0;0;0;0.09;0;0.39
+452;"Luiz Felipe";"Lazio";14;911;0;0;0.16;0.42;0.02;0.04
+453;"Luca Mora";"Spezia";4;101;0;0;0.1;0;0.09;0
+454;"Lorenzo Venuti";"Fiorentina";28;1764;0;1;0.22;2.11;0.01;0.11
+455;"Lorenzo Del Pinto";"Benevento";1;10;0;0;0;0;0;0
+456;"Mehdi Leris";"Sampdoria";20;356;0;0;0.08;0.53;0.02;0.14
+457;"Mattia Bani";"Genoa,Parma Calcio 1913";26;2077;0;0;0.95;0.29;0.04;0.01
+458;"Johan Mojica";"Atalanta";11;293;0;0;0.11;0.65;0.03;0.2
+459;"Lyanco";"Torino";23;1954;0;0;1.52;0.36;0.07;0.02
+460;"Fabrizio Caligara";"Cagliari";10;178;0;0;0;0.13;0;0.06
+461;"Rogerio";"Sassuolo";28;1881;0;1;0.45;1.59;0.02;0.08
+462;"Andrea Danzi";"Verona";2;106;0;0;0.02;0.06;0.02;0.05
+463;"Manuel Gasparini";"Udinese";1;1;0;0;0;0;0;0
+464;"Vincenzo Millico";"Torino";3;16;0;0;0;0.02;0;0.13
+465;"Siriki Sanogo";"Benevento";1;9;0;0;0;0;0;0
+466;"Gonzalo Villar";"Roma";33;1855;0;1;0.54;0.66;0.03;0.03
+467;"Justin Kluivert";"Roma";2;15;0;0;0.01;0;0.08;0
+468;"Daniel Fuzato";"Roma";5;450;0;0;0;0;0;0
+469;"Mitchell Dijks";"Bologna";20;1506;0;0;0.06;0.23;0;0.01
+470;"Federico Santander";"Bologna";4;29;0;1;0.21;0.38;0.66;1.18
+471;"Pietro Terracciano";"Fiorentina";4;270;0;0;0;0;0;0
+472;"Ismael Bennacer";"AC Milan";21;1345;0;2;0.93;0.53;0.06;0.04
+473;"Ivan Provedel";"Spezia";29;2610;0;0;0;0;0;0
+474;"Simone Iacoponi";"Parma Calcio 1913";16;1191;0;0;0.11;0;0.01;0
+475;"Mattia Sprocati";"Parma Calcio 1913";1;20;0;0;0;0;0;0
+476;"Hidde ter Avest";"Udinese";6;348;0;0;0;0;0;0
+477;"Giangiacomo Magnani";"Verona";25;1491;0;0;0.67;0.03;0.04;0
+478;"Tòfol Montiel";"Fiorentina";2;2;0;0;0;0;0;0
+479;"Koray Günter";"Verona";27;1780;0;2;0.21;0.74;0.01;0.04
+480;"Juan Musso";"Udinese";35;3150;0;0;0;0;0;0
+481;"Ronaldo Vieira";"Verona";4;221;0;0;0.05;0.03;0.02;0.01
+482;"Drissa Camara";"Parma Calcio 1913";1;14;0;0;0;0;0;0
+483;"Petar Micin";"Udinese";1;13;0;0;0;0;0;0
+484;"Matteo Scozzarella";"Parma Calcio 1913";3;156;0;0;0;0.27;0;0.16
+485;"Musa Juwara";"Bologna";5;39;0;0;0.02;0;0.04;0
+486;"Nicolo Fagioli";"Juventus";1;16;0;0;0;0;0;0
+487;"Kiril Despodov";"Cagliari";1;10;0;0;0;0;0;0
+488;"Nicolo Rovella";"Genoa";20;1186;0;2;0.76;1.78;0.06;0.13
+489;"Ibañez";"Roma";30;2405;0;1;1.11;1.74;0.04;0.07
+490;"Merih Demiral";"Juventus";15;931;0;1;0.79;0.78;0.08;0.08
+491;"Christian Oliva";"Cagliari";10;383;0;1;0;0.11;0;0.03
+492;"Nicolò Armini";"Lazio";1;3;0;0;0;0;0;0
+493;"Manolo Portanova";"Genoa,Juventus";5;132;0;0;0.52;0;0.35;0
+494;"Giacomo Ricci";"Parma Calcio 1913";3;60;0;0;0;0;0;0
+495;"Léo Duarte";"AC Milan";1;17;0;0;0;0;0;0
+496;"Pawel Dawidowicz";"Verona";30;1866;0;0;1.14;1.15;0.06;0.06
+497;"Sofyan Amrabat";"Fiorentina";31;2458;0;0;0.41;0.58;0.02;0.02
+498;"Alan Empereur";"Verona";4;222;0;0;0.07;0;0.03;0
+499;"Alessandro Berardi";"Verona";1;25;0;0;0;0;0;0
+500;"Stefano Denswil";"Bologna";5;107;0;0;0;0;0;0
+501;"Denis Vavro";"Lazio";1;31;0;0;0;0;0;0
+502;"Igor Julio";"Fiorentina";21;1155;0;0;0.53;0.12;0.04;0.01
+503;"Karlo Letica";"Sampdoria";1;90;0;0;0;0;0;0
+504;"Mert Müldür";"Sassuolo";28;1680;0;0;0.69;0.63;0.04;0.03
+505;"Alessandro Tripaldelli";"Cagliari";10;295;0;0;0;0.25;0;0.07
+506;"Sandro Tonali";"AC Milan";25;1342;0;0;0.43;1.24;0.03;0.08
+507;"Jacopo Petriccione";"Crotone";20;955;0;0;0.08;0.4;0.01;0.04
+508;"Yildirim Mert Cetin";"Verona";6;417;0;0;0.1;0;0.02;0
+509;"Yordan Osorio";"Parma Calcio 1913";23;1814;0;0;0.41;0.11;0.02;0.01
+510;"Sebastian Walukiewicz";"Cagliari";19;1619;0;1;0.23;0.71;0.01;0.04
+511;"Samuel Di Carmine";"Crotone,Verona";22;985;0;0;2.53;0.09;0.23;0.01
+512;"Joshua Zirkzee";"Parma Calcio 1913";4;104;0;0;0.05;0.23;0.04;0.2
+513;"Andri Fannar Baldursson";"Bologna";8;209;0;0;0.13;0.06;0.06;0.03
+514;"Amad Diallo Traore";"Atalanta";1;12;0;0;0.03;0.05;0.21;0.37
+515;"Riccardo Calafiori";"Roma";3;66;0;0;0;0;0;0
+516;"Ebrima Darboe";"Roma";5;330;0;0;0.07;0.03;0.02;0.01
+517;"Andrea Adorante";"Parma Calcio 1913";1;8;0;0;0;0;0;0
+518;"Edoardo Vergani";"Bologna";1;11;0;0;0;0;0;0
+519;"Daniel Maldini";"AC Milan";5;17;0;0;0.18;0;0.94;0
+520;"Lucien Agoume";"Spezia";12;799;0;0;0.11;0.1;0.01;0.01
+521;"Brian Oddei";"Sassuolo";5;33;0;2;0.15;0.97;0.41;2.63
+522;"Andrea Carboni";"Cagliari";15;1089;0;1;0.24;1.3;0.02;0.11
+523;"Djavan Anderson";"Lazio";3;68;0;0;0;0;0;0
+524;"Kristoffer Askildsen";"Sampdoria";6;83;0;0;0.01;0;0.01;0
+525;"Bosko Sutalo";"Atalanta";7;228;0;0;0;0.16;0;0.06
+526;"Lorenzo Colombo";"AC Milan";4;89;0;0;0.42;0;0.42;0
+527;"Martin Palumbo";"Udinese";3;61;0;0;0;0;0;0
+528;"Matteo Lovato";"Verona";24;1377;0;0;0.02;0.18;0;0.01
+529;"Márk Kosznovszky";"Parma Calcio 1913";1;90;0;0;0.29;0;0.29;0
+530;"Botond Balogh";"Parma Calcio 1913";3;163;0;0;0;0;0;0
+531;"Raul Moro";"Lazio";1;9;0;0;0;0;0;0
+532;"Jacopo Segre";"Torino";9;176;0;0;0.25;0.06;0.13;0.03
+533;"Kevin Rüegg";"Verona";7;186;0;0;0.02;0;0.01;0
+534;"Ivor Pandur";"Verona";4;335;0;0;0;0;0;0
+535;"Iyenoma Destiny Udogie";"Verona";6;160;0;0;0.48;0.03;0.27;0.01
+536;"Denis Dragus";"Crotone";9;159;0;0;0.11;0;0.06;0
+537;"Tomislav Gomelt";"Crotone";2;14;0;0;0;0;0;0
+538;"Augustus Kargbo";"Crotone";1;30;0;0;0;0;0;0
+539;"Gian Marco Crespi";"Crotone";1;90;0;0;0;0;0;0
+540;"Gabriele Zappa";"Cagliari";34;2401;0;4;0.42;3.95;0.02;0.15
+541;"Guglielmo Vicario";"Cagliari";4;360;0;0;0;0;0;0
+542;"Matteo Ruggeri";"Atalanta";6;210;0;0;0.07;0.01;0.03;0.01
+543;"Matteo Tramoni";"Cagliari";6;65;0;0;0.03;0;0.04;0
+544;"Lorenzo Montipò";"Benevento";37;3330;0;0;0;0;0;0
+545;"Daam Foulon";"Benevento";23;1014;0;1;0.01;0.11;0;0.01
+546;"Nicolò Manfredini";"Benevento";1;90;0;0;0;0;0;0
+547;"Christian Pastina";"Benevento";3;118;0;1;0;0.37;0;0.28
+548;"Giuseppe Di Serio";"Benevento";16;253;0;0;0.56;0.01;0.2;0
+549;"Jeroen Zoet";"Spezia";7;605;0;0;0;0;0;0
+550;"Juan Ramos";"Spezia";6;288;0;0;0.02;0.22;0;0.07
+551;"Paolo Bartolomei";"Spezia";6;321;0;1;0.13;0.27;0.04;0.08
+552;"Matteo Ricci";"Spezia";29;2244;0;2;0.88;1.93;0.04;0.08
+553;"Salvador Ferrer";"Spezia";18;1183;0;1;0.1;1.09;0.01;0.08
+554;"Luca Vignali";"Spezia";21;1602;0;0;0.13;0.7;0.01;0.04
+555;"Thomas Ouwejan";"Udinese";15;396;0;2;0.14;1.48;0.03;0.34
+556;"Aaron Hickey";"Bologna";11;766;0;0;0.04;0.05;0;0.01
+557;"Antonio Palumbo";"Sampdoria";1;5;0;0;0.03;0;0.49;0
+558;"Lautaro Valenti";"Parma Calcio 1913";11;495;0;0;0.1;0.02;0.02;0
+559;"Gennaro Acampora";"Spezia";14;420;0;0;0.26;0.01;0.06;0
+560;"Luis Rojas";"Crotone";7;86;0;0;0.03;0.01;0.03;0.01
+561;"Nicola Zalewski";"Roma";1;8;0;1;0;0.08;0;0.87
+562;"Steeve-Mike Eboa Ebongue";"Genoa";3;49;0;1;0;0.39;0;0.71
+563;"Alberto Paleari";"Genoa";3;203;0;0;0;0;0;0
+564;"Giuseppe Caso";"Genoa";2;51;0;0;0;0;0;0
+565;"Simone Rabbi";"Bologna";4;30;0;1;0;0.02;0;0.07
+566;"Nahuel Estévez";"Spezia";27;1781;0;3;2.05;2.43;0.1;0.12
+567;"Léo Sena";"Spezia";16;869;0;0;0.04;0.15;0;0.02
+568;"Radu Dragusin";"Juventus";1;1;0;0;0;0;0;0
+569;"Omar Khailoti";"Bologna";1;27;0;0;0;0;0;0
+570;"Mattia Pagliuca";"Bologna";1;10;0;0;0;0.01;0;0.12
+571;"Alessandro Di Pardo";"Juventus";4;7;0;0;0;0.02;0;0.27
+572;"Maxime Busi";"Parma Calcio 1913";24;1176;0;1;0.33;0.95;0.03;0.07
+573;"Giuseppe Mastinu";"Spezia";3;31;0;0;0;0;0;0
+574;"Emmanuel Gyabuaa";"Atalanta";1;1;0;0;0;0;0;0
+575;"Philip Yeboah Ankrah";"Verona";1;9;0;0;0;0;0;0
+576;"Antonio Cioffi";"Napoli";1;9;0;0;0;0.1;0;0.98
+577;"Joakim Maehle";"Atalanta";20;1208;0;2;1.34;1.58;0.1;0.12
+578;"Daan Dierckx";"Parma Calcio 1913";7;476;0;0;0;0;0;0
+579;"Isaac Karamoko";"Sassuolo";1;1;0;0;0;0;0;0
+580;"Chaka Traorè";"Parma Calcio 1913";3;12;0;0;0.08;0;0.62;0
+581;"Jérôme Onguéné";"Genoa";4;177;0;0;0;0;0;0
+582;"Vasilios Zagaritis";"Parma Calcio 1913";2;62;0;0;0;0.05;0;0.08
+583;"Davide Ghislandi";"Atalanta";1;3;0;0;0;0;0;0
+584;"Valentin Antov";"Bologna";5;229;0;0;0.01;0.02;0.01;0.01
+585;"Viktor Kovalenko";"Atalanta";1;2;0;0;0;0;0;0
+586;"Amadou Diambo";"Benevento";1;2;0;0;0;0;0;0
+587;"Bryan Reynolds";"Roma";5;283;0;0;0;0.03;0;0.01
+588;"Felix Correia";"Juventus";1;6;0;0;0;0;0;0
+589;"Wisdom Amey";"Bologna";1;1;0;0;0;0;0;0
+590;"Kacper Urbanski";"Bologna";1;1;0;0;0;0;0;0
+591;"Edoardo Bove";"Roma";1;8;0;0;0;0;0;0
+592;"Antonio Raimondo";"Bologna";1;1;0;0;0;0;0;0
+593;"Yayah Kallon";"Genoa";1;42;0;0;0.12;0.02;0.26;0.05
+594;"Marco Bertini";"Lazio";1;3;0;0;0;0;0;0
