@@ -323,47 +323,71 @@ body {
     color: #002288;
 }
 
-.radar-grid {
+.radar-legend {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
-.radar-panel {
-    flex: 1 1 320px;
-    max-width: 480px;
+.legend-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.9rem;
 }
 
-.radar-panel.hidden {
+.legend-chip.hidden {
     display: none;
 }
 
-.radar-panel-title {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 600;
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.legend-name {
     color: #ffffff;
-    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.legend-meta {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
 }
 
 .radar-wrapper {
     position: relative;
     width: 100%;
-    height: 380px;
+    max-width: 560px;
+    height: 420px;
     margin: 0 auto;
+}
+
+.radar-wrapper.hidden {
+    display: none;
 }
 
 .compare-no-data {
     text-align: center;
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.9rem;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
+    max-width: 560px;
+    margin: 0 auto;
 }
 
 @media (max-width: 480px) {
     .radar-wrapper {
-        height: 300px;
+        height: 320px;
     }
 
     .chart-controls {
