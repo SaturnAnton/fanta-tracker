@@ -218,78 +218,152 @@ body {
 .chart-controls {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-.season-selector {
+.season-select-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
-.season-checkbox {
+.season-select-wrapper label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.season-select {
+    padding: 0.55rem 1rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.season-select:focus {
+    border-color: var(--primary-color);
+}
+
+.season-select option {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.compare-wrapper {
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.compare-search-box-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.compare-search-box-wrapper.hidden {
+    display: none;
+}
+
+.compare-search-box {
+    width: 100%;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.95rem;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.compare-search-box-wrapper .suggestions-dropdown {
+    top: calc(100% + 8px);
+}
+
+.compare-active {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.8rem;
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    color: #ffffff;
-    cursor: pointer;
-    user-select: none;
-}
-
-.season-checkbox input[type="checkbox"] {
-    accent-color: var(--primary-color);
-    cursor: pointer;
-}
-
-.season-swatch {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
-}
-
-.chart-mode-actions {
-    display: flex;
     gap: 0.6rem;
-}
-
-.btn-chip {
-    padding: 0.45rem 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.5rem 0.6rem 0.5rem 1rem;
+    background-color: rgba(34, 211, 238, 0.15);
+    border: 1px solid rgba(34, 211, 238, 0.6);
     border-radius: 20px;
-    font-size: 0.85rem;
+    color: #ffffff;
+    font-size: 0.9rem;
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.btn-chip:hover {
+.btn-remove-compare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-remove-compare:hover {
     background-color: #ffffff;
     color: #002288;
+}
+
+.radar-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.radar-panel {
+    flex: 1 1 320px;
+    max-width: 480px;
+}
+
+.radar-panel.hidden {
+    display: none;
+}
+
+.radar-panel-title {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
 }
 
 .radar-wrapper {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    height: 420px;
+    height: 380px;
     margin: 0 auto;
+}
+
+.compare-no-data {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    padding: 2rem 1rem;
 }
 
 @media (max-width: 480px) {
     .radar-wrapper {
-        height: 320px;
+        height: 300px;
     }
 
     .chart-controls {
@@ -297,8 +371,9 @@ body {
         align-items: stretch;
     }
 
-    .chart-mode-actions {
-        justify-content: center;
+    .compare-wrapper {
+        max-width: 100%;
+        justify-content: flex-start;
     }
 }
 

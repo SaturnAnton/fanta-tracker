@@ -26,15 +26,43 @@
     <h2 class="chart-title">Confronto statistiche</h2>
 
     <div class="chart-controls">
-        <div class="season-selector" id="seasonSelector"></div>
-        <div class="chart-mode-actions">
-            <button type="button" id="selectAllSeasons" class="btn-chip">Tutte le stagioni</button>
-            <button type="button" id="clearSeasons" class="btn-chip">Deseleziona</button>
+        <div class="season-select-wrapper">
+            <label for="seasonSelect">Stagione</label>
+            <select id="seasonSelect" class="season-select"></select>
+        </div>
+
+        <div class="compare-wrapper">
+            <div class="compare-search-box-wrapper" id="compareSearchWrapper">
+                <input
+                    type="text"
+                    id="compareInput"
+                    class="compare-search-box"
+                    placeholder="Confronta con un giocatore..."
+                    autocomplete="off"
+                >
+                <div id="compareSuggestions" class="suggestions-dropdown hidden"></div>
+            </div>
+            <div id="compareActive" class="compare-active hidden">
+                <span id="compareActiveName"></span>
+                <button type="button" id="removeCompare" class="btn-remove-compare" aria-label="Rimuovi confronto">✕</button>
+            </div>
         </div>
     </div>
 
-    <div class="radar-wrapper">
-        <canvas id="radarChart"></canvas>
+    <div class="radar-grid" id="radarGrid">
+        <div class="radar-panel">
+            <div class="radar-panel-title" id="mainRadarTitle"></div>
+            <div class="radar-wrapper">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+        <div class="radar-panel hidden" id="compareRadarPanel">
+            <div class="radar-panel-title" id="compareRadarTitle"></div>
+            <div class="radar-wrapper">
+                <canvas id="radarChartCompare"></canvas>
+            </div>
+            <p id="compareNoData" class="compare-no-data hidden"></p>
+        </div>
     </div>
 
     <div class="button-footer button-footer-attached">
@@ -68,6 +96,8 @@
         Gs: "Gol Subiti",
         Rp: "Rigori Parati",
         Ass: "Assist",
+        Xg: "xG (Expected Goals)",
+        Xa: "xA (Expected Assist)",
         Amm: "Ammonizioni",
         Esp: "Espulsioni",
     };
@@ -75,25 +105,20 @@
     // Colonne non numeriche, escluse dal radar chart
     const NON_STAT_COLUMNS = new Set(["Stagione", "Squadra", "R"]);
 
-    // Palette di colori pensata per risaltare su uno sfondo blu elettrico
-    const SEASON_COLORS = [
-        "#fbbf24", // giallo
-        "#34d399", // verde acqua
-        "#f472b6", // rosa
-        "#ffffff", // bianco
-        "#fb923c", // arancione
-        "#c084fc", // viola chiaro
-        "#22d3ee", // ciano
-        "#a3e635", // lime
-    ];
+    const MAIN_COLOR = "#fbbf24";     // giallo, per il giocatore ricercato
+    const COMPARE_COLOR = "#22d3ee";  // ciano, per il giocatore di confronto
 
-    let radarChart = null;
-    let playerRows = [];
-    let statKeys = [];
+    let mainRadarChart = null;
+    let compareRadarChart = null;
+
+    let mainData = null;      // risposta completa /api/player per il giocatore principale
+    let compareData = null;   // risposta completa /api/player per il giocatore di confronto
 
     fetch(`/api/player/${encodeURIComponent(decodedName)}`)
         .then(response => response.json())
         .then(data => {
+            mainData = data;
+
             const loadingMsg = document.getElementById('loadingMessage');
             const tableContainer = document.getElementById('tableContainer');
             const noDataMsg = document.getElementById('noDataMessage');
@@ -138,14 +163,13 @@
             loadingMsg.classList.add('hidden');
             tableContainer.classList.remove('hidden');
 
-            // Preparazione dati per il diagramma di Kiviat
-            playerRows = data.rows;
-            statKeys = data.columns.filter(col => !NON_STAT_COLUMNS.has(col));
-
-            if (playerRows.length > 0 && statKeys.length >= 3) {
-                buildSeasonSelector(playerRows);
+            const statKeys = statKeysFor(data);
+            if (data.rows.length > 0 && statKeys.length >= 3) {
+                document.getElementById('mainRadarTitle').textContent =
+                    `${data.player_name} (${data.role_extended || ''} - ${data.team || ''})`;
+                buildSeasonSelect(data.rows);
                 chartSection.classList.remove('hidden');
-                renderRadarChart(playerRows.map(r => r.Stagione));
+                renderCharts();
             }
         })
         .catch(error => {
@@ -154,126 +178,230 @@
             document.getElementById('noDataMessage').classList.remove('hidden');
         });
 
-    function buildSeasonSelector(rows) {
-        const container = document.getElementById('seasonSelector');
-        container.innerHTML = '';
-
-        rows.forEach((row, index) => {
-            const label = document.createElement('label');
-            label.className = 'season-checkbox';
-
-            const input = document.createElement('input');
-            input.type = 'checkbox';
-            input.value = row.Stagione;
-            input.checked = true;
-            input.addEventListener('change', updateChartFromSelection);
-
-            const swatch = document.createElement('span');
-            swatch.className = 'season-swatch';
-            swatch.style.backgroundColor = SEASON_COLORS[index % SEASON_COLORS.length];
-
-            const text = document.createElement('span');
-            text.textContent = row.Stagione;
-
-            label.appendChild(input);
-            label.appendChild(swatch);
-            label.appendChild(text);
-            container.appendChild(label);
-        });
-
-        document.getElementById('selectAllSeasons').addEventListener('click', () => {
-            container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
-            updateChartFromSelection();
-        });
-
-        document.getElementById('clearSeasons').addEventListener('click', () => {
-            container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-            updateChartFromSelection();
-        });
+    function statKeysFor(playerData) {
+        return playerData.columns.filter(col => !NON_STAT_COLUMNS.has(col));
     }
 
-    function updateChartFromSelection() {
-        const checked = Array.from(document.querySelectorAll('#seasonSelector input[type="checkbox"]:checked'))
-            .map(cb => cb.value);
-        renderRadarChart(checked);
+    function buildSeasonSelect(rows) {
+        const select = document.getElementById('seasonSelect');
+        select.innerHTML = '';
+
+        rows.forEach(row => {
+            const option = document.createElement('option');
+            option.value = row.Stagione;
+            option.textContent = row.Stagione;
+            select.appendChild(option);
+        });
+
+        // Seleziona di default l'ultima stagione disponibile
+        select.value = rows[rows.length - 1].Stagione;
+        select.addEventListener('change', renderCharts);
     }
 
-    function renderRadarChart(selectedSeasons) {
-        const canvas = document.getElementById('radarChart');
-        const selectedRows = playerRows.filter(r => selectedSeasons.includes(r.Stagione));
+    function renderCharts() {
+        const season = document.getElementById('seasonSelect').value;
+        renderMainRadar(season);
+        renderCompareRadar(season);
+    }
 
-        if (radarChart) {
-            radarChart.destroy();
-            radarChart = null;
-        }
+    function buildRadarDataset(playerData, season, color) {
+        const row = playerData.rows.find(r => r.Stagione === season);
+        if (!row) return null;
 
-        if (selectedRows.length === 0) {
-            return;
-        }
-
-        // Normalizza ogni statistica su una scala 0-100 in base al massimo tra le stagioni disponibili,
-        // cosi' le forme restano leggibili anche quando le grandezze delle statistiche sono molto diverse tra loro.
+        const statKeys = statKeysFor(playerData);
         const maxPerStat = {};
         statKeys.forEach(key => {
-            const values = playerRows.map(r => Number(r[key]) || 0);
+            const values = playerData.rows.map(r => Number(r[key]) || 0);
             maxPerStat[key] = Math.max(...values, 1);
         });
 
-        const datasets = selectedRows.map((row) => {
-            const originalIndex = playerRows.findIndex(r => r.Stagione === row.Stagione);
-            const color = SEASON_COLORS[originalIndex % SEASON_COLORS.length];
-            return {
-                label: row.Stagione,
+        return {
+            statKeys,
+            rawValues: statKeys.map(key => row[key]),
+            dataset: {
+                label: playerData.player_name,
                 data: statKeys.map(key => ((Number(row[key]) || 0) / maxPerStat[key]) * 100),
                 borderColor: color,
                 backgroundColor: color + "33",
                 pointBackgroundColor: color,
                 borderWidth: 2,
-                rawValues: statKeys.map(key => row[key]),
-            };
-        });
+            },
+        };
+    }
 
-        radarChart = new Chart(canvas, {
+    function radarOptions(statKeys, rawValues) {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    min: 0,
+                    max: 100,
+                    ticks: { display: false, backdropColor: 'transparent' },
+                    grid: { color: 'rgba(255, 255, 255, 0.25)' },
+                    angleLines: { color: 'rgba(255, 255, 255, 0.25)' },
+                    pointLabels: {
+                        color: '#ffffff',
+                        font: { size: 12, weight: '600' },
+                    },
+                },
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (context) => {
+                            const raw = rawValues[context.dataIndex];
+                            const label = STAT_LABELS[statKeys[context.dataIndex]] || statKeys[context.dataIndex];
+                            return `${label}: ${raw !== null && raw !== undefined ? raw : '-'}`;
+                        },
+                    },
+                },
+            },
+        };
+    }
+
+    function renderMainRadar(season) {
+        const canvas = document.getElementById('radarChart');
+        const built = buildRadarDataset(mainData, season, MAIN_COLOR);
+
+        if (mainRadarChart) {
+            mainRadarChart.destroy();
+            mainRadarChart = null;
+        }
+        if (!built) return;
+
+        mainRadarChart = new Chart(canvas, {
             type: 'radar',
             data: {
-                labels: statKeys.map(key => STAT_LABELS[key] || key),
-                datasets: datasets,
+                labels: built.statKeys.map(key => STAT_LABELS[key] || key),
+                datasets: [built.dataset],
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        min: 0,
-                        max: 100,
-                        ticks: {
-                            display: false,
-                            backdropColor: 'transparent',
-                        },
-                        grid: { color: 'rgba(255, 255, 255, 0.25)' },
-                        angleLines: { color: 'rgba(255, 255, 255, 0.25)' },
-                        pointLabels: {
-                            color: '#ffffff',
-                            font: { size: 13, weight: '600' },
-                        },
-                    },
-                },
-                plugins: {
-                    legend: {
-                        labels: { color: '#ffffff', font: { size: 13 } },
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: (context) => {
-                                const raw = context.dataset.rawValues[context.dataIndex];
-                                const label = STAT_LABELS[statKeys[context.dataIndex]] || statKeys[context.dataIndex];
-                                return `${context.dataset.label} - ${label}: ${raw !== null && raw !== undefined ? raw : '-'}`;
-                            },
-                        },
-                    },
-                },
-            },
+            options: radarOptions(built.statKeys, built.rawValues),
         });
     }
+
+    function renderCompareRadar(season) {
+        const panel = document.getElementById('compareRadarPanel');
+        const noDataMsg = document.getElementById('compareNoData');
+        const canvas = document.getElementById('radarChartCompare');
+
+        if (compareRadarChart) {
+            compareRadarChart.destroy();
+            compareRadarChart = null;
+        }
+
+        if (!compareData) {
+            panel.classList.add('hidden');
+            return;
+        }
+
+        panel.classList.remove('hidden');
+        document.getElementById('compareRadarTitle').textContent =
+            `${compareData.player_name} (${compareData.role_extended || ''} - ${compareData.team || ''})`;
+
+        const built = buildRadarDataset(compareData, season, COMPARE_COLOR);
+
+        if (!built) {
+            canvas.classList.add('hidden');
+            noDataMsg.textContent = `${compareData.player_name} non ha statistiche per la stagione ${season}.`;
+            noDataMsg.classList.remove('hidden');
+            return;
+        }
+
+        canvas.classList.remove('hidden');
+        noDataMsg.classList.add('hidden');
+
+        compareRadarChart = new Chart(canvas, {
+            type: 'radar',
+            data: {
+                labels: built.statKeys.map(key => STAT_LABELS[key] || key),
+                datasets: [built.dataset],
+            },
+            options: radarOptions(built.statKeys, built.rawValues),
+        });
+    }
+
+    // --- Ricerca del giocatore da confrontare ---
+
+    const compareInput = document.getElementById('compareInput');
+    const compareSuggestions = document.getElementById('compareSuggestions');
+    let compareSearchTimeout = null;
+
+    compareInput.addEventListener('input', () => {
+        const query = compareInput.value.trim();
+        clearTimeout(compareSearchTimeout);
+
+        if (query.length === 0) {
+            compareSuggestions.classList.add('hidden');
+            compareSuggestions.innerHTML = '';
+            return;
+        }
+
+        compareSearchTimeout = setTimeout(() => {
+            fetch(`/api/search?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const suggestions = (data.suggestions || []).filter(name => name !== mainData.player_name);
+                    renderCompareSuggestions(suggestions);
+                })
+                .catch(error => console.error('Errore nella ricerca:', error));
+        }, 200);
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!document.getElementById('compareSearchWrapper').contains(event.target)) {
+            compareSuggestions.classList.add('hidden');
+        }
+    });
+
+    function renderCompareSuggestions(names) {
+        compareSuggestions.innerHTML = '';
+
+        if (names.length === 0) {
+            compareSuggestions.classList.add('hidden');
+            return;
+        }
+
+        names.slice(0, 8).forEach(name => {
+            const item = document.createElement('div');
+            item.className = 'suggestion-item';
+            item.textContent = name;
+            item.addEventListener('click', () => selectComparePlayer(name));
+            compareSuggestions.appendChild(item);
+        });
+
+        compareSuggestions.classList.remove('hidden');
+    }
+
+    function selectComparePlayer(name) {
+        compareSuggestions.classList.add('hidden');
+        compareInput.value = '';
+
+        fetch(`/api/player/${encodeURIComponent(name)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.rows || data.rows.length === 0) {
+                    return;
+                }
+
+                compareData = data;
+
+                document.getElementById('compareSearchWrapper').classList.add('hidden');
+                const activeBox = document.getElementById('compareActive');
+                document.getElementById('compareActiveName').textContent = data.player_name;
+                activeBox.classList.remove('hidden');
+
+                renderCharts();
+            })
+            .catch(error => console.error('Errore nel caricamento del giocatore da confrontare:', error));
+    }
+
+    document.getElementById('removeCompare').addEventListener('click', () => {
+        compareData = null;
+        document.getElementById('compareActive').classList.add('hidden');
+        document.getElementById('compareSearchWrapper').classList.remove('hidden');
+        renderCharts();
+    });
 </script>
 {% endblock %}
