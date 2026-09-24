@@ -9,6 +9,15 @@
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -21,7 +30,14 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+    overflow-x: hidden;
     color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 1.5rem;
 }
 
 @keyframes gradientMove {
@@ -154,7 +170,8 @@ body {
 .table-container {
     margin: 2rem 0;
     border-radius: 8px;
-    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     box-shadow: var(--shadow-md);
 }
 
@@ -164,6 +181,7 @@ body {
 
 .player-table {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
     background-color: white;
     color:#000000
@@ -178,11 +196,13 @@ body {
     padding: 1rem;
     text-align: left;
     font-weight: 600;
+    white-space: nowrap;
     border-bottom: 2px solid var(--border-color);
 }
 
 .player-table td {
     padding: 0.75rem 1rem;
+    white-space: nowrap;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -436,7 +456,7 @@ body {
     display: none !important;
 }
 
-.loading, .no-data {
+.loading, .no-data, .no-results {
     text-align: center;
     padding: 2rem;
     color: white;
@@ -453,7 +473,13 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 2rem 1rem;
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 2.5rem 0 2rem;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 
     .hero h1 {
@@ -462,6 +488,14 @@ body {
 
     .hero p {
         font-size: 1rem;
+    }
+
+    .search-container {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 2rem;
     }
 
     .player-header {
